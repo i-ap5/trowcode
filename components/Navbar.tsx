@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import Logo from "@/assets/logo.svg?react";
-
+// Assuming Logo is your SVG component
+import Logo from "@/assets/logo.svg?react"; 
 
 const Navbar: React.FC = () => {
   const [scrolled, setScrolled] = useState(false);
@@ -13,14 +13,17 @@ const Navbar: React.FC = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Prevent scrolling when mobile menu is open
-  useEffect(() => {
-    if (mobileMenuOpen) {
-      document.body.style.overflow = 'hidden';
-    } else {
-      document.body.style.overflow = 'unset';
+  // 1. CENTRALIZED SCROLL LOGIC
+  const scrollToContact = () => {
+    const element = document.getElementById('contact');
+    if (element) {
+      setMobileMenuOpen(false); // Close mobile menu drawer
+      element.scrollIntoView({ 
+        behavior: 'smooth',
+        block: 'start' 
+      });
     }
-  }, [mobileMenuOpen]);
+  };
 
   const navLinks = [
     { name: 'Solutions', href: '#solutions' },
@@ -33,46 +36,48 @@ const Navbar: React.FC = () => {
       <motion.header 
         initial={{ y: -50, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
-        className={`fixed top-0 left-0 right-0 z-[100] transition-all duration-300 ${
-          scrolled ? 'py-4 glass shadow-2xl' : 'py-8 bg-transparent'
+        className={`fixed top-0 left-0 right-0 z-[100] transition-all duration-500 ${
+          scrolled ? 'py-4 glass border-b border-white/10' : 'py-8 bg-transparent'
         }`}
       >
         <div className="max-w-7xl mx-auto px-6 lg:px-12 flex items-center justify-between">
+          {/* Logo Section */}
           <div 
             className="flex items-center gap-3 group cursor-pointer" 
-            onClick={() => {
-              window.scrollTo({top: 0, behavior: 'smooth'});
-              setMobileMenuOpen(false);
-            }}
+            onClick={() => window.scrollTo({top: 0, behavior: 'smooth'})}
           >
-            <div className="size-10 rounded-xl bg-primary flex items-center justify-center text-white shadow-lg group-hover:scale-110 transition-transform">
-              <Logo className="size-6" />
+            <div className="size-10 flex items-center justify-center group-hover:scale-110 transition-transform">
+              <Logo className="size-8" />
             </div>
-            <span className="text-2xl font-display font-bold text-white tracking-tighter uppercase">Trowcode</span>
+            <span className="text-2xl font-bold text-white tracking-tighter">Trowcode</span>
           </div>
 
+          {/* Desktop Nav */}
           <nav className="hidden md:flex items-center gap-10">
             {navLinks.map((link) => (
               <a 
                 key={link.name}
                 href={link.href}
-                className="text-[11px] font-bold text-slate-400 hover:text-white transition-colors uppercase tracking-[0.2em] relative group"
+                className="text-[11px] font-bold text-slate-500 hover:text-white transition-colors uppercase tracking-[0.2em] relative group"
               >
                 {link.name}
-                <span className="absolute -bottom-1 left-0 w-0 h-[1.5px] bg-primary transition-all duration-300 group-hover:w-full"></span>
+                <span className="absolute -bottom-1 left-0 w-0 h-[1.5px] bg-white transition-all duration-300 group-hover:w-full"></span>
               </a>
             ))}
           </nav>
 
           <div className="flex items-center gap-4">
-           <button className="hidden sm:flex items-center justify-center h-11 px-8 rounded-full bg-white text-black text-xs font-bold transition-all hover:bg-primary hover:text-white active:scale-95 shadow-lg">
+            {/* 2. FIXED DESKTOP BUTTON */}
+            <button 
+              onClick={scrollToContact}
+              className="hidden sm:flex items-center justify-center h-11 px-8 rounded-full bg-white text-black text-xs font-bold transition-all hover:bg-primary hover:text-white active:scale-95 shadow-xl"
+            >
               Talk to us
             </button>
                         
             <button 
-              className="md:hidden flex items-center justify-center p-2 rounded-xl bg-white/5 border border-white/10 text-white hover:bg-white/10 transition-colors"
+              className="md:hidden flex items-center justify-center p-2 rounded-xl bg-white/5 border border-white/10 text-white"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              aria-label="Toggle menu"
             >
               <span className="material-symbols-outlined text-2xl">
                 {mobileMenuOpen ? 'close' : 'menu'}
@@ -82,7 +87,7 @@ const Navbar: React.FC = () => {
         </div>
       </motion.header>
 
-      {/* Robust Mobile Menu Drawer */}
+      {/* Mobile Menu Drawer */}
       <AnimatePresence>
         {mobileMenuOpen && (
           <>
@@ -90,7 +95,7 @@ const Navbar: React.FC = () => {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              className="fixed inset-0 z-[110] bg-black/80 backdrop-blur-md md:hidden"
+              className="fixed inset-0 z-[110] bg-black/90 backdrop-blur-md md:hidden"
               onClick={() => setMobileMenuOpen(false)}
             />
             <motion.div 
@@ -98,14 +103,11 @@ const Navbar: React.FC = () => {
               animate={{ x: 0 }}
               exit={{ x: '100%' }}
               transition={{ type: 'spring', damping: 30, stiffness: 300 }}
-              className="fixed top-0 right-0 bottom-0 w-[80%] max-w-sm z-[120] bg-background border-l border-white/10 md:hidden flex flex-col p-10"
+              className="fixed top-0 right-0 bottom-0 w-[80%] z-[120] bg-[#080808] border-l border-white/10 md:hidden flex flex-col p-10"
             >
               <div className="flex justify-end mb-16">
-                <button 
-                  className="text-white p-3 rounded-full bg-white/5 hover:bg-white/10 transition-colors"
-                  onClick={() => setMobileMenuOpen(false)}
-                >
-                  <span className="material-symbols-outlined text-2xl">close</span>
+                <button onClick={() => setMobileMenuOpen(false)}>
+                  <span className="material-symbols-outlined text-white text-2xl">close</span>
                 </button>
               </div>
               
@@ -115,7 +117,7 @@ const Navbar: React.FC = () => {
                     key={link.name}
                     href={link.href}
                     onClick={() => setMobileMenuOpen(false)}
-                    className="text-4xl font-display font-bold text-white uppercase tracking-tighter hover:text-primary transition-colors"
+                    className="text-4xl font-bold text-white uppercase tracking-tighter hover:text-primary transition-colors"
                   >
                     {link.name}
                   </a>
@@ -123,10 +125,14 @@ const Navbar: React.FC = () => {
               </div>
 
               <div className="mt-auto">
-                <button className="w-full h-16 rounded-2xl bg-primary text-white text-lg font-bold shadow-xl active:scale-95 transition-transform">
+                {/* 3. FIXED MOBILE BUTTON */}
+                <button 
+                  onClick={scrollToContact}
+                  className="w-full h-16 rounded-2xl bg-white text-black text-lg font-bold shadow-2xl active:scale-95 transition-transform"
+                >
                   Talk to us
                 </button>
-                <p className="mt-8 text-slate-500 text-xs text-center uppercase tracking-widest font-bold">Built to Work</p>
+                <p className="mt-8 text-slate-600 text-[10px] text-center uppercase tracking-[0.5em] font-bold">Protocol Active</p>
               </div>
             </motion.div>
           </>

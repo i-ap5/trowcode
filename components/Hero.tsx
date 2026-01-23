@@ -92,15 +92,15 @@ const Hero: React.FC = () => {
           initial={{ opacity: 0, letterSpacing: '0.2em' }}
           animate={{ opacity: 1, letterSpacing: '0.6em' }}
           transition={{ duration: 1.5, ease: "easeOut" }}
-          className="mb-12 inline-flex items-center gap-4 px-6 py-2 rounded-full border border-white/10 bg-black/60 backdrop-blur-xl"
+          className="mb-12 inline-flex items-center gap-4 px-6 py-2 rounded-full 0 backdrop-blur-xl"
         >
-          <span className="text-[10px] font-bold uppercase text-white/60">Systems that just work</span>
+          {/* <span className="text-[10px] font-bold uppercase text-white/60">Systems that just work</span> */}
         </motion.div>
 
         <h1 className="text-[clamp(3.5rem,15vw,10.5rem)] font-display font-bold leading-[0.82] tracking-tighter text-white mb-10 selection:bg-white selection:text-black">
           <SplitText text="Build to" delay={300} />
           <br/>
-          <SplitText text="work." className="italic text-white/40" delay={700} />
+          <SplitText text="work." className=" text-white/60" delay={700} />
         </h1>
         
         <motion.p 
@@ -118,9 +118,18 @@ const Hero: React.FC = () => {
           transition={{ delay: 1.4 }}
           className="flex flex-col sm:flex-row gap-6 w-full sm:w-auto px-6 mb-24"
         >
-          <motion.button 
+        <motion.button 
             whileHover={{ scale: 1.05, backgroundColor: '#fff', color: '#000' }}
             whileTap={{ scale: 0.95 }}
+            onClick={() => {
+              const element = document.getElementById('contact');
+              if (element) {
+                element.scrollIntoView({ 
+                  behavior: 'smooth',
+                  block: 'start' // Aligns the section to the top of the screen
+                });
+              }
+            }}
             className="h-16 px-12 rounded-full bg-white text-black text-lg font-bold transition-all shadow-2xl flex items-center justify-center gap-3"
           >
             Start project
@@ -128,6 +137,11 @@ const Hero: React.FC = () => {
           </motion.button>
           
           <motion.button 
+          onClick={() => {
+            document.getElementById('methodology')?.scrollIntoView({ 
+              behavior: 'smooth' 
+            });
+          }}
             whileHover={{ scale: 1.05, borderColor: '#fff' }}
             className="h-16 px-12 rounded-full border border-white/20 text-white text-lg font-bold backdrop-blur-sm transition-all"
           >

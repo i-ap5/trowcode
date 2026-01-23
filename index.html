@@ -1,12 +1,18 @@
 <!DOCTYPE html>
 <html lang="en" class="dark">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Trowcode | Systems that just work</title>
+<link rel="icon" type="image/svg+xml" href="assets/logo.svg">
+
+    <title>Trowcode | Build to work</title>
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap"
+        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+        rel="stylesheet" />
     <script>
         tailwind.config = {
             darkMode: 'class',
@@ -14,7 +20,7 @@
                 extend: {
                     colors: {
                         background: {
-                            DEFAULT: '#000000', 
+                            DEFAULT: '#000000',
                             surface: '#0a0a0a',
                         }
                     },
@@ -35,29 +41,35 @@
             overflow-x: hidden;
             margin: 0;
         }
-        .font-display { font-family: 'Space Grotesk', sans-serif; }
-        
+
+        .font-display {
+            font-family: 'Space Grotesk', sans-serif;
+        }
+
         .glass {
             background: rgba(10, 10, 10, 0.7);
             backdrop-filter: blur(16px);
             -webkit-backdrop-filter: blur(16px);
             border: 1px solid rgba(255, 255, 255, 0.08);
         }
-        
+
         ::-webkit-scrollbar {
             width: 4px;
         }
+
         ::-webkit-scrollbar-track {
             background: #000000;
         }
+
         ::-webkit-scrollbar-thumb {
             background: #333;
             border-radius: 10px;
         }
+
         ::-webkit-scrollbar-thumb:hover {
             background: #fff;
         }
-        
+
         .shimmer-text {
             background: linear-gradient(90deg, #fff, #555, #fff);
             background-size: 200% auto;
@@ -66,28 +78,32 @@
             background-clip: text;
             animation: shimmer 5s linear infinite;
         }
+
         @keyframes shimmer {
-            to { background-position: 200% center; }
+            to {
+                background-position: 200% center;
+            }
         }
 
         /* High performance animations */
         * {
-          backface-visibility: hidden;
-          -webkit-tap-highlight-color: transparent;
+            backface-visibility: hidden;
+            -webkit-tap-highlight-color: transparent;
         }
-        
+
         .btn-white {
             background: white;
             color: black;
             transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
         }
+
         .btn-white:hover {
             background: #f0f0f0;
             transform: translateY(-2px);
-            box-shadow: 0 15px 30px rgba(255,255,255,0.15);
+            box-shadow: 0 15px 30px rgba(255, 255, 255, 0.15);
         }
     </style>
-<script type="importmap">
+    <script type="importmap">
 {
   "imports": {
     "react/": "https://esm.sh/react@^19.2.3/",
@@ -99,10 +115,12 @@
   }
 }
 </script>
-<link rel="stylesheet" href="/index.css">
+    <link rel="stylesheet" href="/index.css">
 </head>
+
 <body>
     <div id="root"></div>
-<script type="module" src="/index.tsx"></script>
+    <script type="module" src="/index.tsx"></script>
 </body>
+
 </html>

@@ -11,6 +11,7 @@ import Testimonials from './components/Testimonials';
 import CTA from './components/CTA';
 import Footer from './components/Footer';
 import InteractiveBackground from './components/InteractiveBackground';
+import Contact from './components/Contact';
 
 const App: React.FC = () => {
   const { scrollYProgress } = useScroll();
@@ -41,6 +42,7 @@ const App: React.FC = () => {
         <Portfolio />
         <TechStack />
         <Testimonials />
+        <Contact />
         <CTA />
       </main>
 
