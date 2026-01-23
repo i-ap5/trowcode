@@ -1,5 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import Logo from "@/assets/logo.svg?react"; 
+
 
 const Footer: React.FC = () => {
   return (
@@ -14,11 +16,11 @@ const Footer: React.FC = () => {
           <div className="lg:col-span-6 flex flex-col justify-between">
             <div>
               <div className="flex items-center gap-4 mb-12">
-                <div className="size-10 rounded-full bg-white flex items-center justify-center text-black">
-                  <span className="material-symbols-outlined text-xl font-black">bolt</span>
-                </div>
-                <h2 className="text-3xl font-bold text-white tracking-tighter uppercase ">TROWCODE</h2>
-              </div>
+                 <div className="size-10 flex items-center justify-center group-hover:scale-110 transition-transform">
+              <Logo className="size-6" />
+            </div>
+            <span className="text-2xl font-bold text-white tracking-tighter">Trowcode</span>
+          </div>
               
               <h3 className="text-4xl md:text-5xl font-bold text-white tracking-tighter leading-none mb-8 max-w-md">
                 Architecting the <br />
