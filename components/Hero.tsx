@@ -1,5 +1,6 @@
 import React from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
+import { useNavigate } from 'react-router-dom';
 import Hyperspeed from './Hyperspeed';
 
 const SplitText = ({ text, delay = 0, className = "" }: { text: string, delay?: number, className?: string }) => {
@@ -30,6 +31,8 @@ const Hero: React.FC = () => {
   const { scrollY } = useScroll();
   const opacityFade = useTransform(scrollY, [0, 500], [1, 0]);
   const contentY = useTransform(scrollY, [0, 500], [0, -100]);
+  const navigate = useNavigate();
+
 
   const mechanisms = [
     { label: "Design", detail: "Fidelity", icon: "architecture" },
@@ -41,10 +44,10 @@ const Hero: React.FC = () => {
   return (
     <section className="relative min-h-screen flex flex-col justify-center items-center px-6 lg:px-12 pt-32 pb-24 overflow-hidden bg-black">
       {/* High-fidelity Hyperspeed Three.js Implementation */}
-      <Hyperspeed 
+      <Hyperspeed
         effectOptions={{
-          onSpeedUp: () => {},
-          onSlowDown: () => {},
+          onSpeedUp: () => { },
+          onSlowDown: () => { },
           distortion: 'turbulentDistortion',
           length: 400,
           roadWidth: 10,
@@ -80,15 +83,15 @@ const Hero: React.FC = () => {
           }
         }}
       />
-      
+
       {/* Gradient vignette to ground the typography */}
       <div className="absolute inset-0 z-[1] pointer-events-none bg-[radial-gradient(circle_at_center,transparent_20%,rgba(0,0,0,0.8)_100%)]" />
 
-      <motion.div 
+      <motion.div
         style={{ opacity: opacityFade, y: contentY }}
         className="max-w-7xl mx-auto text-center flex flex-col items-center relative z-10 w-full"
       >
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0, letterSpacing: '0.2em' }}
           animate={{ opacity: 1, letterSpacing: '0.6em' }}
           transition={{ duration: 1.5, ease: "easeOut" }}
@@ -99,11 +102,11 @@ const Hero: React.FC = () => {
 
         <h1 className="text-[clamp(3.5rem,15vw,10.5rem)] font-display font-bold leading-[0.82] tracking-tighter text-white mb-10 selection:bg-white selection:text-black">
           <SplitText text="Build to" delay={300} />
-          <br/>
+          <br />
           <SplitText text="work." className=" text-white/60" delay={700} />
         </h1>
-        
-        <motion.p 
+
+        <motion.p
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 1.2, duration: 1 }}
@@ -112,19 +115,19 @@ const Hero: React.FC = () => {
           No fluff. No overhead. We engineer high-performance business infrastructure designed for absolute efficiency.
         </motion.p>
 
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 1.4 }}
           className="flex flex-col sm:flex-row gap-6 w-full sm:w-auto px-6 mb-24"
         >
-        <motion.button 
+          <motion.button
             whileHover={{ scale: 1.05, backgroundColor: '#fff', color: '#000' }}
             whileTap={{ scale: 0.95 }}
             onClick={() => {
               const element = document.getElementById('contact');
               if (element) {
-                element.scrollIntoView({ 
+                element.scrollIntoView({
                   behavior: 'smooth',
                   block: 'start' // Aligns the section to the top of the screen
                 });
@@ -135,23 +138,19 @@ const Hero: React.FC = () => {
             Start project
             <span className="material-symbols-outlined">arrow_forward</span>
           </motion.button>
-          
-          <motion.button 
-          onClick={() => {
-            document.getElementById('methodology')?.scrollIntoView({ 
-              behavior: 'smooth' 
-            });
-          }}
+
+          <motion.button
+            onClick={() => navigate('/portfolio')}
             whileHover={{ scale: 1.05, borderColor: '#fff' }}
             className="h-16 px-12 rounded-full border border-white/20 text-white text-lg font-bold backdrop-blur-sm transition-all"
           >
-            Our Process
+            Portfolio
           </motion.button>
         </motion.div>
       </motion.div>
 
       {/* 4D Framework Dock - High Contrast Glass Style */}
-      <motion.div 
+      <motion.div
         initial={{ opacity: 0, y: 60 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 1.8, duration: 1, ease: [0.16, 1, 0.3, 1] }}
@@ -162,8 +161,8 @@ const Hero: React.FC = () => {
             <div key={idx} className="group relative p-8 rounded-[2.2rem] transition-all hover:bg-white hover:text-black cursor-default text-center md:text-left">
               <span className="text-white/30 group-hover:text-black/30 font-mono text-[9px] mb-3 block tracking-widest font-bold">0{idx + 1}</span>
               <div className="flex flex-col md:flex-row items-center gap-3 mb-1">
-                 <span className="material-symbols-outlined text-white group-hover:text-black text-2xl">{m.icon}</span>
-                 <h3 className="font-display font-bold text-lg tracking-tight uppercase">{m.label}</h3>
+                <span className="material-symbols-outlined text-white group-hover:text-black text-2xl">{m.icon}</span>
+                <h3 className="font-display font-bold text-lg tracking-tight uppercase">{m.label}</h3>
               </div>
               <p className="text-white/40 group-hover:text-black/60 text-[10px] font-bold uppercase tracking-widest leading-none hidden md:block">{m.detail}</p>
             </div>
