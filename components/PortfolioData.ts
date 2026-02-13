@@ -3,7 +3,7 @@ import aibillo_mob from '@/assets/aibillo_mob.jpg';
 import brofix_img from '@/assets/brofix.jpg';
 import brofix_app from '@/assets/brofix_app.jpg';
 import letuic_app from '@/assets/letuic_app.jpg';
-import livingspace from '@/assets/livingspace.jpg';
+// import livingspace from '@/assets/livingspace.jpg';
 import malabarlands from '@/assets/malabarlands.jpg';
 import molodost from '@/assets/molodost.jpg';
 import novatek from '@/assets/novatek.jpg';
@@ -11,7 +11,7 @@ import relish from '@/assets/relish.jpg';
 import spiceroute from '@/assets/spiceroute.jpg';
 import status67 from '@/assets/status67.jpg';
 
-export type ProjectCategory = 'Web & E-Commerce' | 'Mobile App' | 'Custom Software';
+export type ProjectCategory = 'Web & E-Commerce' | 'Mobile App' | 'Custom Software' | 'Creative & Exhibition Services';
 
 export interface Project {
     id: string;
@@ -135,19 +135,33 @@ export const projects: Project[] = [
         imageFit: 'contain', // Zoom out effect for landscape image
         tags: ['MERN', 'Socket.io', 'Maps'],
     },
+    // {
+    //     id: 'signature-ls',
+    //     title: 'Signature by LS',
+    //     category: 'Web & E-Commerce',
+    //     shortDesc: 'Luxury interiors with AR preview technology.',
+    //     fullDesc: `• Three.js powered AR preview for furniture placement.
+    // • Personalized recommendation algorithms for decor.
+    // • High-conversion checkout with financing integrations.
+    // • Immersive desktop and mobile shopping experience.`,
+    //     link: 'https://livingspaceinteriors.in/',
+    //     image: 'https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?q=80&w=2000',
+    //     tags: ['Three.js', 'AR', 'Luxury'],
+    // },
     {
-        id: 'signature-ls',
-        title: 'Signature by LS',
-        category: 'Web & E-Commerce',
-        shortDesc: 'Luxury interiors with AR preview technology.',
-        fullDesc: `• Three.js powered AR preview for furniture placement.
-    • Personalized recommendation algorithms for decor.
-    • High-conversion checkout with financing integrations.
-    • Immersive desktop and mobile shopping experience.`,
-        link: 'https://livingspaceinteriors.in/',
-        image: 'https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?q=80&w=2000',
-        tags: ['Three.js', 'AR', 'Luxury'],
-    },
+    id: 'nexhibit',
+    title: 'Nexhibit',
+    category: 'Creative & Exhibition Services',
+    shortDesc: 'Exhibition design, space booking, and experience-driven brand showcases.',
+    fullDesc: `• Comprehensive exhibition planning and management services. 
+• Custom stall fabrication and immersive booth design.
+• Prime space booking for trade shows and expos.
+• Strategic brand experience execution to boost engagement. :contentReference[oaicite:0]{index=0}`,
+    link: 'https://nexhibit.vercel.app/',
+    image: 'https://images.unsplash.com/photo-1711390811443-ae5a33144f7d?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D?q=80&w=2000',
+    tags: ['Exhibition', 'Event Design', 'Brand Experience'],
+},
+
     {
         id: 'relish-herbals',
         title: 'Relish Herbals',
@@ -250,18 +264,18 @@ export const projects: Project[] = [
         image: 'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?q=80&w=2070',
         tags: ['ERP', 'Mfg', 'Forecasting'],
     },
-    {
-        id: 'livingspace-platform',
-        title: 'Living Space Interiors',
-        category: 'Custom Software',
-        shortDesc: 'Interior design project coordination ecosystem.',
-        fullDesc: `• Interactive Gantt charts with automatic dependency sync.
-• Vendor portals for swatch and 3D render approvals.
-• Photo-verified progressive invoicing milestones.
-• Client-facing progress timelapses and staging previews.`,
-        image: livingspace,
-        tags: ['PM Tool', 'Gantt', 'Glow Design'],
-    },
+//     {
+//         id: 'livingspace-platform',
+//         title: 'Living Space Interiors',
+//         category: 'Custom Software',
+//         shortDesc: 'Interior design project coordination ecosystem.',
+//         fullDesc: `• Interactive Gantt charts with automatic dependency sync.
+// • Vendor portals for swatch and 3D render approvals.
+// • Photo-verified progressive invoicing milestones.
+// • Client-facing progress timelapses and staging previews.`,
+//         image: livingspace,
+//         tags: ['PM Tool', 'Gantt', 'Glow Design'],
+//     },
     {
         id: 'erp-suite',
         title: 'ERP Suite',
