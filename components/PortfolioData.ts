@@ -108,6 +108,84 @@ export const projects: Project[] = [
         image: malabarlands,
         tags: ['Nuxt.js', 'Strapi', 'Maps'],
     },
+    {
+        id: 'molodost-dubai',
+        title: 'Molodost Dubai',
+        categories: ['Websites'],
+        shortDesc: 'Luxury digital branding for Dubai exclusive market.',
+        fullDesc: `• Immersive parallax scrolling with GSAP animations.
+• Multilingual support (English/Arabic) with automated RTL logic.
+• Sub-2s mobile load times via aggressive image optimization.
+• Next.js SSR for instant first paints and SEO dominance.`,
+        link: 'https://molodostdubai.com/',
+        image: molodost,
+        tags: ['Next.js', 'GSAP', 'Sanity'],
+    },
+    {
+        id: 'status67',
+        title: 'Status67',
+        categories: ['Websites'],
+        shortDesc: 'Minimalist B2B consulting site focused on lead generation.',
+        fullDesc: `• Narrative-driven hero sections for instant credibility.
+• Embedded Calendly widgets with pre-populated user data.
+• Static site generation for ultra-fast load times.
+• Rich schema markup for high organic search rankings.`,
+        link: 'https://status67.com/',
+        image: status67,
+        tags: ['Gatsby', 'Contentful', 'SEO'],
+    },
+    {
+        id: 'jersey-station',
+        title: 'Jersey Station',
+        categories: ['Websites'],
+        shortDesc: 'Interactive custom sports merchandise e-commerce.',
+        fullDesc: `• Interactive product customizer using HTML5 canvas.
+• Inventory synchronization across multiple warehouses.
+• Abandoned cart recovery with custom design restoration.
+• High-traffic handling during peak seasonal sales.`,
+        link: 'https://www.jerseystation.in/',
+        image: 'https://images.unsplash.com/photo-1577471488278-16eec37ffcc2?q=80&w=2874&auto=format&fit=crop',
+        tags: ['Shopify', 'Canvas', 'Node.js'],
+    },
+    {
+        id: 'novatek',
+        title: 'Novatek Solutions',
+        categories: ['Websites'],
+        shortDesc: 'Technical services leadership and case study platform.',
+        fullDesc: `• Engaging case study carousels revealing ROI narratives.
+• Video testimonial sliders for enhanced social proof.
+• Thought leadership blog with automated SEO strategies.
+• Smooth GSAP micro-interactions for premium feel.`,
+        link: 'https://www.novateksolutions.in/',
+        image: novatek,
+        tags: ['Next.js', 'SEO', 'GSAP'],
+    },
+    {
+        id: 'relish-herbals',
+        title: 'Relish Herbals',
+        categories: ['Websites'],
+        shortDesc: 'Wellness e-commerce with subscription builders.',
+        fullDesc: `• Guided health-goal quizzes with product matching.
+• Flexible subscription model with recurring auto-ship.
+• Benefit-driven storytelling through macro photography.
+• Integrated customer loyalty and rewards program.`,
+        link: 'https://relishherbals.com/',
+        image: relish,
+        tags: ['E-comm', 'Wellness', 'Subs'],
+    },
+    {
+        id: 'spice-route',
+        title: 'SpiceRoute Exports',
+        categories: ['Websites'],
+        shortDesc: 'B2B spice trading with dynamic compliance tools.',
+        fullDesc: `• Dynamic bulk order calculators for global weights.
+• Automated export documentation generator for customs.
+• Multi-currency pricing engine based on buyer location.
+• Real-time logistics middleware for freight quotes.`,
+        link: 'https://spicerouteexports.com/',
+        image: spiceroute,
+        tags: ['Django', 'Postgres', 'B2B'],
+    },
 
     // --- OTHER PROJECTS ---
     {
