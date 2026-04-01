@@ -69,6 +69,45 @@ export const projects: Project[] = [
         tags: ['Exhibition', 'Event Design', 'Brand Experience'],
     },
     {
+        id: 'molodost-dubai',
+        title: 'Molodost Dubai',
+        categories: ['Websites'],
+        shortDesc: 'Luxury digital branding for Dubai exclusive market.',
+        fullDesc: `• Immersive parallax scrolling with GSAP animations.
+• Multilingual support (English/Arabic) with automated RTL logic.
+• Sub-2s mobile load times via aggressive image optimization.
+• Next.js SSR for instant first paints and SEO dominance.`,
+        link: 'https://molodostdubai.com/',
+        image: molodost,
+        tags: ['Next.js', 'GSAP', 'Sanity'],
+    },
+    {
+        id: 'status67',
+        title: 'Status67',
+        categories: ['Websites'],
+        shortDesc: 'Minimalist B2B consulting site focused on lead generation.',
+        fullDesc: `• Narrative-driven hero sections for instant credibility.
+• Embedded Calendly widgets with pre-populated user data.
+• Static site generation for ultra-fast load times.
+• Rich schema markup for high organic search rankings.`,
+        link: 'https://status67.com/',
+        image: status67,
+        tags: ['Gatsby', 'Contentful', 'SEO'],
+    },
+    {
+        id: 'jersey-station',
+        title: 'Jersey Station',
+        categories: ['Websites'],
+        shortDesc: 'Interactive custom sports merchandise e-commerce.',
+        fullDesc: `• Interactive product customizer using HTML5 canvas.
+• Inventory synchronization across multiple warehouses.
+• Abandoned cart recovery with custom design restoration.
+• High-traffic handling during peak seasonal sales.`,
+        link: 'https://www.jerseystation.in/',
+        image: 'https://images.unsplash.com/photo-1577471488278-16eec37ffcc2?q=80&w=2874&auto=format&fit=crop',
+        tags: ['Shopify', 'Canvas', 'Node.js'],
+    },
+    {
         id: 'ai-billo',
         title: 'AI Billo',
         categories: ['Websites', 'Mobile apps', 'Custom software'],
@@ -107,45 +146,6 @@ export const projects: Project[] = [
         link: 'https://malabarlands.com/',
         image: malabarlands,
         tags: ['Nuxt.js', 'Strapi', 'Maps'],
-    },
-    {
-        id: 'molodost-dubai',
-        title: 'Molodost Dubai',
-        categories: ['Websites'],
-        shortDesc: 'Luxury digital branding for Dubai exclusive market.',
-        fullDesc: `• Immersive parallax scrolling with GSAP animations.
-• Multilingual support (English/Arabic) with automated RTL logic.
-• Sub-2s mobile load times via aggressive image optimization.
-• Next.js SSR for instant first paints and SEO dominance.`,
-        link: 'https://molodostdubai.com/',
-        image: molodost,
-        tags: ['Next.js', 'GSAP', 'Sanity'],
-    },
-    {
-        id: 'status67',
-        title: 'Status67',
-        categories: ['Websites'],
-        shortDesc: 'Minimalist B2B consulting site focused on lead generation.',
-        fullDesc: `• Narrative-driven hero sections for instant credibility.
-• Embedded Calendly widgets with pre-populated user data.
-• Static site generation for ultra-fast load times.
-• Rich schema markup for high organic search rankings.`,
-        link: 'https://status67.com/',
-        image: status67,
-        tags: ['Gatsby', 'Contentful', 'SEO'],
-    },
-    {
-        id: 'jersey-station',
-        title: 'Jersey Station',
-        categories: ['Websites'],
-        shortDesc: 'Interactive custom sports merchandise e-commerce.',
-        fullDesc: `• Interactive product customizer using HTML5 canvas.
-• Inventory synchronization across multiple warehouses.
-• Abandoned cart recovery with custom design restoration.
-• High-traffic handling during peak seasonal sales.`,
-        link: 'https://www.jerseystation.in/',
-        image: 'https://images.unsplash.com/photo-1577471488278-16eec37ffcc2?q=80&w=2874&auto=format&fit=crop',
-        tags: ['Shopify', 'Canvas', 'Node.js'],
     },
     {
         id: 'novatek',

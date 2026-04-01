@@ -43,11 +43,7 @@ const Impact: React.FC = () => {
     >
       {/* Sticky container that keeps the section in viewport for a while */}
       <div className="sticky top-0 h-[100dvh] w-full flex flex-col justify-center items-center overflow-hidden border-t border-white/5">
-        <motion.div
-          style={{ width: lineWidth }}
-          className="absolute top-0 left-0 h-[1px] bg-gradient-to-r from-transparent via-white/40 to-transparent z-20"
-        />
-
+        {/* Content Container */}
         <div className="max-w-7xl mx-auto px-6 lg:px-12 relative z-10 w-full text-left pt-16 md:pt-0">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-24 items-start mb-8 lg:mb-32">
             <div>
