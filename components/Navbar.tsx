@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useScroll, useMotionValueEvent } from 'framer-motion';
+import { motion, AnimatePresence, useScroll, useMotionValueEvent } from 'framer-motion';
 import { Link, useLocation } from 'react-router-dom';
 import Logo from "@/assets/logo.svg?react";
 
@@ -99,33 +99,61 @@ const Navbar: React.FC = () => {
          </header>
 
          {/* Mobile Menu */}
-         {mobileMenuOpen && (
-            <div className="fixed inset-0 z-[120] bg-black flex flex-col p-6 md:hidden">
-               <div className="h-20 flex justify-between items-center mb-8 border-b border-white/10">
-                  <div className="flex items-center gap-2">
-                     <Logo className="size-6 fill-white text-white" />
-                     <span className="text-lg font-bold text-white tracking-tight uppercase">Trowcode</span>
+         <AnimatePresence>
+            {mobileMenuOpen && (
+               <motion.div 
+                  initial={{ x: '100%' }}
+                  animate={{ x: 0 }}
+                  exit={{ x: '100%' }}
+                  transition={{ type: "spring", damping: 30, stiffness: 300 }}
+                  className="fixed inset-0 z-[120] bg-black flex flex-col p-6 md:hidden"
+               >
+                  <div className="h-20 flex justify-between items-center mb-16 border-b border-white/5">
+                     <div className="flex items-center gap-2">
+                        <Logo className="size-6 fill-white text-white" />
+                        <span className="text-lg font-bold text-white tracking-tight">Trowcode</span>
+                     </div>
+                     <button 
+                        onClick={() => setMobileMenuOpen(false)}
+                        className="size-10 flex items-center justify-center rounded-full bg-white/5 hover:bg-white/10 transition-colors"
+                     >
+                        <span className="material-symbols-outlined text-white text-[20px]">close</span>
+                     </button>
                   </div>
-                  <button onClick={() => setMobileMenuOpen(false)}>
-                     <span className="material-symbols-outlined text-white">close</span>
-                  </button>
-               </div>
 
-               <div className="flex flex-col gap-6">
-                  {navLinks.map((link) => (
-                     <Link key={link.name} to={link.href} onClick={() => handleNavClick(link.href)} className="text-4xl font-light text-white tracking-tight">
-                        {link.name}
-                     </Link>
-                  ))}
-               </div>
+                  <nav className="flex flex-col gap-8">
+                     {navLinks.map((link, i) => (
+                        <motion.div
+                           key={link.name}
+                           initial={{ x: 20, opacity: 0 }}
+                           animate={{ x: 0, opacity: 1 }}
+                           transition={{ delay: 0.1 + (i * 0.05) }}
+                        >
+                           <Link 
+                              to={link.href} 
+                              onClick={() => handleNavClick(link.href)} 
+                              className="text-4xl font-medium text-white tracking-tighter hover:text-white/60 transition-colors"
+                           >
+                              {link.name}
+                           </Link>
+                        </motion.div>
+                     ))}
+                  </nav>
 
-               <div className="mt-auto pb-8">
-                  <button onClick={() => { setMobileMenuOpen(false); document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' }); }} className="w-full h-16 rounded-full bg-white text-black text-sm font-bold uppercase tracking-widest">
-                     Contact Us
-                  </button>
-               </div>
-            </div>
-         )}
+                  <div className="mt-auto pb-12">
+                     <motion.button 
+                        initial={{ y: 20, opacity: 0 }}
+                        animate={{ y: 0, opacity: 1 }}
+                        transition={{ delay: 0.3 }}
+                        onClick={() => { setMobileMenuOpen(false); document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' }); }} 
+                        className="w-full h-16 rounded-full bg-white text-black text-sm font-bold uppercase tracking-widest active:scale-95"
+                     >
+                        Contact Us
+                     </motion.button>
+                  </div>
+               </motion.div>
+            )}
+         </AnimatePresence>
       </>
    );
 };

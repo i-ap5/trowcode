@@ -84,7 +84,7 @@ const Hero: React.FC = () => {
         style={{ opacity, scale, y }}
         className="max-w-7xl mx-auto px-6 lg:px-12 text-center flex flex-col items-center relative z-10 w-full"
       >
-        <h1 className="text-[clamp(3rem,12vw,9.5rem)] font-semibold font-display leading-[0.85] tracking-tighter text-white mb-10 selection:bg-white selection:text-black">
+        <h1 className="text-[clamp(4.5rem,15vw,9.5rem)] font-semibold font-display leading-[0.85] tracking-tighter text-white mb-10 selection:bg-white selection:text-black">
           <SplitText text="Build to" delay={300} />
           <br />
           <SplitText text="work." className=" text-white/60" delay={700} />
