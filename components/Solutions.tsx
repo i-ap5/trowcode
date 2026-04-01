@@ -11,8 +11,8 @@ const Solutions: React.FC = () => {
   ];
 
   return (
-    <section id="solutions" className="bg-white text-black py-32 lg:py-48 px-6 lg:px-12 border-b border-black/10">
-      <div className="max-w-7xl mx-auto flex flex-col lg:flex-row gap-16 lg:gap-24 relative items-start">
+    <section id="solutions" className="bg-white text-black py-20 lg:py-24">
+      <div className="max-w-7xl mx-auto px-6 lg:px-12 flex flex-col lg:flex-row gap-16 lg:gap-24 relative items-start">
 
         {/* Sticky Title Column */}
         <div className="lg:w-1/3 lg:sticky lg:top-32 h-auto mb-8 lg:mb-0">
@@ -43,6 +43,11 @@ const Solutions: React.FC = () => {
           ))}
         </div>
 
+      </div>
+
+      {/* Beautiful Minimal Section Ending Line */}
+      <div className="max-w-7xl mx-auto px-6 lg:px-12 mt-4 lg:mt-8 flex justify-center">
+        <div className="w-48 h-px bg-black/5" />
       </div>
     </section>
   );

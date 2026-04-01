@@ -3,13 +3,13 @@ import { motion } from 'framer-motion';
 
 const CTA: React.FC = () => {
   return (
-    <section className="bg-white py-32 px-6 lg:px-12 border-b border-black/10 text-center">
-      <div className="max-w-2xl mx-auto">
+    <section className="bg-white py-16 lg:py-24 px-6 lg:px-12 text-center border-t border-black/5">
+      <div className="max-w-3xl mx-auto">
         <motion.h2
           initial={{ opacity: 0, y: 10 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-5xl md:text-6xl lg:text-7xl font-medium tracking-tight mb-8"
+          className="text-4xl md:text-5xl lg:text-6xl font-medium tracking-tight mb-6"
         >
           Ready to start?
         </motion.h2>
@@ -19,7 +19,7 @@ const CTA: React.FC = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ delay: 0.1 }}
-          className="text-lg text-gray-500 mb-10 font-light max-w-lg mx-auto"
+          className="text-lg text-gray-500 mb-8 font-light max-w-lg mx-auto leading-relaxed"
         >
           Tell us about your project and we'll get back to you within 24 hours with an estimate and timeline.
         </motion.p>
@@ -34,7 +34,7 @@ const CTA: React.FC = () => {
             onClick={() => {
               document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
             }}
-            className="inline-flex items-center justify-center px-8 h-14 bg-black text-white rounded-full text-sm font-medium tracking-wide hover:bg-gray-800 transition-colors"
+            className="inline-flex items-center justify-center px-12 h-14 bg-black text-white rounded-none text-base font-bold transition-all hover:bg-gray-800 active:scale-95 shadow-lg"
           >
             Start a project
           </button>

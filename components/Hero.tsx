@@ -29,12 +29,13 @@ const SplitText = ({ text, delay = 0, className = "" }: { text: string, delay?: 
 
 const Hero: React.FC = () => {
   const { scrollY } = useScroll();
-  const opacityFade = useTransform(scrollY, [0, 500], [1, 0]);
-  const contentY = useTransform(scrollY, [0, 500], [0, -100]);
+  const scale = useTransform(scrollY, [0, 800], [1, 0.8]);
+  const opacity = useTransform(scrollY, [0, 600], [1, 0]);
+  const y = useTransform(scrollY, [0, 800], ["0%", "15%"]);
   const navigate = useNavigate();
 
   return (
-    <section className="relative min-h-screen flex flex-col justify-center items-center px-6 lg:px-12 pt-32 pb-24 overflow-hidden bg-black">
+    <div className="relative h-screen w-full flex flex-col justify-center items-center overflow-hidden">
       {/* High-fidelity Hyperspeed Three.js Implementation */}
       <Hyperspeed
         effectOptions={{
@@ -76,14 +77,14 @@ const Hero: React.FC = () => {
         }}
       />
 
-      {/* Gradient vignette to ground the typography */}
-      <div className="absolute inset-0 z-[1] pointer-events-none bg-[radial-gradient(circle_at_center,transparent_20%,rgba(0,0,0,0.8)_100%)]" />
+      {/* Gradient vignette to ground the typography and blend with lower sections */}
+      <div className="absolute inset-0 z-[1] pointer-events-none bg-[radial-gradient(circle_at_center,transparent_0%,rgba(0,0,0,1)_100%)]" />
 
       <motion.div
-        style={{ opacity: opacityFade, y: contentY }}
-        className="max-w-7xl mx-auto text-center flex flex-col items-center relative z-10 w-full"
+        style={{ opacity, scale, y }}
+        className="max-w-7xl mx-auto px-6 lg:px-12 text-center flex flex-col items-center relative z-10 w-full"
       >
-        <h1 className="text-[clamp(3.5rem,15vw,10.5rem)] font-display font-bold leading-[0.82] tracking-tighter text-white mb-10 selection:bg-white selection:text-black">
+        <h1 className="text-[clamp(3rem,12vw,9.5rem)] font-semibold font-display leading-[0.85] tracking-tighter text-white mb-10 selection:bg-white selection:text-black">
           <SplitText text="Build to" delay={300} />
           <br />
           <SplitText text="work." className=" text-white/60" delay={700} />
@@ -95,7 +96,7 @@ const Hero: React.FC = () => {
           transition={{ delay: 1.2, duration: 1 }}
           className="max-w-2xl text-lg sm:text-2xl text-slate-400 font-normal leading-relaxed mb-16 px-4"
         >
-          No fluff. No overhead. We engineer high-performance business infrastructure designed for absolute efficiency.
+          We build custom dashboards, automation tools, and Al systems to streamline operations and help your business scale.
         </motion.p>
 
         <motion.div
@@ -116,7 +117,7 @@ const Hero: React.FC = () => {
                 });
               }
             }}
-            className="h-16 px-12 rounded-full bg-white text-black text-lg font-bold transition-all shadow-2xl flex items-center justify-center gap-3"
+            className="h-16 px-12 rounded-none bg-white text-black text-lg font-bold transition-all shadow-2xl flex items-center justify-center gap-3 active:scale-95"
           >
             Start project
             <span className="material-symbols-outlined">arrow_forward</span>
@@ -125,13 +126,13 @@ const Hero: React.FC = () => {
           <motion.button
             onClick={() => navigate('/portfolio')}
             whileHover={{ scale: 1.05, borderColor: '#fff' }}
-            className="h-16 px-12 rounded-full border border-white/20 text-white text-lg font-bold backdrop-blur-sm transition-all"
+            className="h-16 px-14 rounded-none border border-white/20 text-white text-lg font-bold backdrop-blur-sm transition-all active:scale-95"
           >
             Portfolio
           </motion.button>
         </motion.div>
       </motion.div>
-    </section>
+    </div>
   );
 };
 

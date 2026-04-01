@@ -3,8 +3,8 @@ import Logo from "@/assets/logo.svg?react";
 
 const Footer: React.FC = () => {
   return (
-    <footer className="bg-black text-white pt-32 pb-16 px-6 lg:px-12 z-20 relative">
-       <div className="max-w-7xl mx-auto flex flex-col">
+    <footer className="bg-black text-white pt-32 pb-16 z-20 relative">
+       <div className="max-w-7xl mx-auto px-6 lg:px-12 flex flex-col">
           
           <div className="flex flex-col lg:flex-row justify-between gap-16 lg:gap-32 mb-32">
              <div className="lg:w-1/2">
@@ -20,9 +20,9 @@ const Footer: React.FC = () => {
              <div className="flex flex-wrap gap-16 lg:gap-32">
                 <div className="flex flex-col gap-6">
                    <span className="text-sm font-medium text-white/50 mb-2 uppercase tracking-widest">Company</span>
-                   <a href="#solutions" className="text-lg text-white hover:text-gray-300 transition-colors">Services</a>
-                   <a href="#methodology" className="text-lg text-white hover:text-gray-300 transition-colors">Process</a>
-                   <a href="#portfolio" className="text-lg text-white hover:text-gray-300 transition-colors">Work</a>
+                   <a href="/#solutions" className="text-lg text-white hover:text-gray-300 transition-colors">Services</a>
+                   <a href="/#methodology" className="text-lg text-white hover:text-gray-300 transition-colors">Process</a>
+                   <a href="/portfolio" className="text-lg text-white hover:text-gray-300 transition-colors">Portfolio</a>
                 </div>
                 <div className="flex flex-col gap-6">
                    <span className="text-sm font-medium text-white/50 mb-2 uppercase tracking-widest">Connect</span>

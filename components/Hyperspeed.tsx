@@ -322,7 +322,7 @@ const Hyperspeed = ({
           alpha: true
         });
         this.renderer.setSize(container.offsetWidth, container.offsetHeight, false);
-        this.renderer.setPixelRatio(window.devicePixelRatio);
+        this.renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
         this.composer = new EffectComposer(this.renderer);
         container.append(this.renderer.domElement);
 
@@ -397,17 +397,15 @@ const Hyperspeed = ({
         this.bloomPass = new EffectPass(
           this.camera,
           new BloomEffect({
-            luminanceThreshold: 0.2,
-            luminanceSmoothing: 0,
+            luminanceThreshold: 0.9,
+            luminanceSmoothing: 0.02,
             resolutionScale: 1
           })
         );
         const smaaPass = new EffectPass(
           this.camera,
           new SMAAEffect({
-            preset: SMAAPreset.MEDIUM,
-            searchImage: SMAAEffect.searchImageDataURL,
-            areaImage: SMAAEffect.areaImageDataURL
+            preset: SMAAPreset.MEDIUM
           })
         );
         this.renderPass.renderToScreen = false;
@@ -803,12 +801,18 @@ const Hyperspeed = ({
     `;
     const roadMarkings_fragment = `
       uv.y = mod(uv.y + uTime * 0.05, 1.);
-      float laneWidth = 1.0 / uLanes;
+      float laneWidth = 1.0 / uLanes * 0.5;
       float brokenLineWidth = laneWidth * uBrokenLinesWidthPercentage;
-      float laneEmptySpace = 1. - uBrokenLinesLengthPercentage;
-      float brokenLines = step(1.0 - brokenLineWidth, fract(uv.x * 2.0)) * step(laneEmptySpace, fract(uv.y * 10.0));
-      float sideLines = step(1.0 - brokenLineWidth, fract((uv.x - laneWidth * (uLanes - 1.0)) * 2.0)) + step(brokenLineWidth, uv.x);
-      brokenLines = mix(brokenLines, sideLines, uv.x);
+      float brokenLinesLength = uBrokenLinesLengthPercentage;
+      
+      float laneX = fract(uv.x * uLanes);
+      float laneY = fract(uv.y * 10.0);
+      
+      float brokenLinesMask = (step(1.0 - uBrokenLinesWidthPercentage, laneX) + step(laneX, uBrokenLinesWidthPercentage)) * step(1.0 - brokenLinesLength, laneY);
+      float shoulderLinesMask = step(1.0 - uShoulderLinesWidthPercentage, uv.x) + step(uv.x, uShoulderLinesWidthPercentage);
+
+      color = mix(color, uBrokenLinesColor, brokenLinesMask);
+      color = mix(color, uShoulderLinesColor, shoulderLinesMask);
     `;
     const roadFragment = roadBaseFragment.replace('#include <roadMarkings_fragment>', roadMarkings_fragment).replace('#include <roadMarkings_vars>', roadMarkings_vars);
     const roadVertex = `
