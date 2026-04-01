@@ -4,43 +4,57 @@ import { motion } from 'framer-motion';
 const Testimonials: React.FC = () => {
   const reviews = [
     { 
-      quote: "Trowcode built our billing system from scratch. Now we spend half the time on paperwork and more time actually running our business. Best decision we made this year.",
-      author: "Mark S.", role: "Small Business Owner", img: 'https://picsum.photos/seed/human1/100/100'
+      quote: "Trowcode delivered our platform on time and exactly to our specifications. Highly recommended.",
+      author: "Mark S.", 
+      role: "SaaS Founder",
     },
     { 
-      quote: "Our previous software was a nightmare. Trowcode fixed the bugs and simplified the UI. Our team finally enjoys using the dashboard. No more training manuals needed!",
-      author: "Jane D.", role: "Operations Manager", img: 'https://picsum.photos/seed/human2/100/100'
+      quote: "A very professional team. They understood our business needs and built a solid application.",
+      author: "Jane D.", 
+      role: "Operations Lead",
+    },
+    { 
+      quote: "Communication was clear, and the quality of code was excellent. We launched four weeks early.",
+      author: "Alex R.", 
+      role: "Startup Founder",
     }
   ];
 
   return (
-    <section className="py-40 px-6 lg:px-12 bg-background-surface/30">
+    <section className="bg-white text-black py-24 lg:py-32 px-6 lg:px-12 border-b border-black/10">
       <div className="max-w-7xl mx-auto">
-        <div className="mb-24 text-center">
-          <h2 className="text-5xl md:text-6xl font-display font-bold text-white mb-6 tracking-tight">People love <span className="text-primary">how it works.</span></h2>
-          <p className="text-slate-400 text-lg font-light">Real feedback from real people using our systems every day.</p>
+        
+        <div className="mb-16">
+          <h2 className="text-3xl font-medium tracking-tight">Client Feedback</h2>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-          {reviews.map((rev, idx) => (
-            <motion.div 
-              key={idx}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              className="glass p-12 rounded-[2.5rem] relative group"
-            >
-              <p className="text-xl md:text-2xl font-light text-slate-100 leading-relaxed mb-12 italic">"{rev.quote}"</p>
-              
-              <div className="flex items-center gap-5">
-                <img src={rev.img} alt={rev.author} className="size-16 rounded-full border-2 border-primary/20" />
-                <div>
-                  <p className="text-lg font-bold text-white">{rev.author}</p>
-                  <p className="text-sm text-slate-500">{rev.role}</p>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-12 lg:gap-16">
+           {reviews.map((r, i) => (
+             <motion.div
+               key={r.author}
+               initial={{ opacity: 0, y: 10 }}
+               whileInView={{ opacity: 1, y: 0 }}
+               viewport={{ once: true }}
+               transition={{ delay: i * 0.1, duration: 0.5 }}
+               className="flex flex-col"
+             >
+                <div className="mb-6 opacity-20">
+                   {/* Minimal SVG Quote Icon */}
+                   <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M10 11L8 15H11V17H5V11L7 7H10L10 11ZM19 11L17 15H20V17H14V11L16 7H19L19 11Z" fill="currentColor"/>
+                   </svg>
                 </div>
-              </div>
-            </motion.div>
-          ))}
+
+                <p className="text-lg text-gray-600 font-light leading-relaxed mb-8 flex-grow">
+                   "{r.quote}"
+                </p>
+
+                <div>
+                   <h4 className="text-sm font-medium text-black">{r.author}</h4>
+                   <p className="text-sm text-gray-500 font-light">{r.role}</p>
+                </div>
+             </motion.div>
+           ))}
         </div>
       </div>
     </section>

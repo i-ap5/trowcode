@@ -33,14 +33,6 @@ const Hero: React.FC = () => {
   const contentY = useTransform(scrollY, [0, 500], [0, -100]);
   const navigate = useNavigate();
 
-
-  const mechanisms = [
-    { label: "Design", detail: "Fidelity", icon: "architecture" },
-    { label: "Develop", detail: "Performance", icon: "terminal" },
-    { label: "Deploy", detail: "Latency", icon: "rocket_launch" },
-    { label: "Dominate", detail: "Authority", icon: "monitoring" }
-  ];
-
   return (
     <section className="relative min-h-screen flex flex-col justify-center items-center px-6 lg:px-12 pt-32 pb-24 overflow-hidden bg-black">
       {/* High-fidelity Hyperspeed Three.js Implementation */}
@@ -91,15 +83,6 @@ const Hero: React.FC = () => {
         style={{ opacity: opacityFade, y: contentY }}
         className="max-w-7xl mx-auto text-center flex flex-col items-center relative z-10 w-full"
       >
-        <motion.div
-          initial={{ opacity: 0, letterSpacing: '0.2em' }}
-          animate={{ opacity: 1, letterSpacing: '0.6em' }}
-          transition={{ duration: 1.5, ease: "easeOut" }}
-          className="mb-12 inline-flex items-center gap-4 px-6 py-2 rounded-full 0 backdrop-blur-xl"
-        >
-          {/* <span className="text-[10px] font-bold uppercase text-white/60">Systems that just work</span> */}
-        </motion.div>
-
         <h1 className="text-[clamp(3.5rem,15vw,10.5rem)] font-display font-bold leading-[0.82] tracking-tighter text-white mb-10 selection:bg-white selection:text-black">
           <SplitText text="Build to" delay={300} />
           <br />
@@ -119,7 +102,7 @@ const Hero: React.FC = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 1.4 }}
-          className="flex flex-col sm:flex-row gap-6 w-full sm:w-auto px-6 mb-24"
+          className="flex flex-col sm:flex-row gap-6 w-full sm:w-auto px-6"
         >
           <motion.button
             whileHover={{ scale: 1.05, backgroundColor: '#fff', color: '#000' }}
@@ -129,7 +112,7 @@ const Hero: React.FC = () => {
               if (element) {
                 element.scrollIntoView({
                   behavior: 'smooth',
-                  block: 'start' // Aligns the section to the top of the screen
+                  block: 'start'
                 });
               }
             }}
@@ -147,27 +130,6 @@ const Hero: React.FC = () => {
             Portfolio
           </motion.button>
         </motion.div>
-      </motion.div>
-
-      {/* 4D Framework Dock - High Contrast Glass Style */}
-      <motion.div
-        initial={{ opacity: 0, y: 60 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 1.8, duration: 1, ease: [0.16, 1, 0.3, 1] }}
-        className="relative z-20 w-full max-w-4xl px-4"
-      >
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-1 p-1 rounded-[2.5rem] bg-white/5 backdrop-blur-2xl border border-white/10">
-          {mechanisms.map((m, idx) => (
-            <div key={idx} className="group relative p-8 rounded-[2.2rem] transition-all hover:bg-white hover:text-black cursor-default text-center md:text-left">
-              <span className="text-white/30 group-hover:text-black/30 font-mono text-[9px] mb-3 block tracking-widest font-bold">0{idx + 1}</span>
-              <div className="flex flex-col md:flex-row items-center gap-3 mb-1">
-                <span className="material-symbols-outlined text-white group-hover:text-black text-2xl">{m.icon}</span>
-                <h3 className="font-display font-bold text-lg tracking-tight uppercase">{m.label}</h3>
-              </div>
-              <p className="text-white/40 group-hover:text-black/60 text-[10px] font-bold uppercase tracking-widest leading-none hidden md:block">{m.detail}</p>
-            </div>
-          ))}
-        </div>
       </motion.div>
     </section>
   );

@@ -1,72 +1,36 @@
 @import "tailwindcss";
 
 @theme {
-  --color-primary: #3b82f6;
+  --color-primary: #000000;
+  --color-surface: #FFFFFF;
   --font-display: "Space Grotesk", sans-serif;
-  --font-body: "DM Sans", sans-serif;
-
-  --color-background: #000000;
-  --color-background-surface: #0a0a0a;
-
-  --ease-fluid: cubic-bezier(0.16, 1, 0.3, 1);
+  --font-body: "Manrope", sans-serif;
 }
 
 @layer base {
   html {
-    background-color: #000000;
+    background-color: var(--color-primary);
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
 
   body {
-    @apply bg-background text-slate-50 font-body antialiased overflow-x-hidden m-0;
+    @apply bg-surface text-black font-body m-0 selection:bg-black selection:text-white;
   }
 }
 
-@layer utilities {
-  .glass {
-    background: rgba(10, 10, 10, 0.7);
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
-    border: 1px solid rgba(255, 255, 255, 0.08);
-  }
-
-  .shimmer-text {
-    background: linear-gradient(90deg, #fff, #555, #fff);
-    background-size: 200% auto;
-    color: transparent;
-    -webkit-background-clip: text;
-    background-clip: text;
-    animation: shimmer 5s linear infinite;
-  }
-
-  .btn-white {
-    @apply bg-white text-black transition-all duration-300 ease-fluid;
-  }
-
-  .btn-white:hover {
-    @apply bg-gray-100 -translate-y-0.5 shadow-2xl shadow-white/15;
-  }
-}
-
-@keyframes shimmer {
-  to {
-    background-position: 200% center;
-  }
-}
-
-/* Scrollbar */
+/* Minimal Scrollbar */
 ::-webkit-scrollbar {
-  width: 4px;
+  width: 6px;
 }
-
 ::-webkit-scrollbar-track {
-  background: #000000;
+  background: transparent;
 }
-
 ::-webkit-scrollbar-thumb {
-  background: #333;
-  border-radius: 10px;
+  background: #E5E7EB;
+  border-radius: 4px;
 }
-
 ::-webkit-scrollbar-thumb:hover {
-  background: #fff;
+  background: #D1D5DB;
 }
