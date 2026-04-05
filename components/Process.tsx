@@ -63,39 +63,60 @@ const Process: React.FC = () => {
         {/* Interactive 4-Column Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 border-t border-black/5">
           {steps.map((step, i) => (
-            <motion.div
-              key={step.title}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: i * 0.05 + 0.4, duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-              className="group relative flex flex-col p-8 lg:p-12 border-b border-black/5 md:border-r last:border-r-0 cursor-default transition-colors duration-700 hover:bg-black overflow-hidden min-h-[320px] lg:min-h-[400px]"
-            >
-              {/* Background Number Accent */}
-              <span className="text-[8rem] font-bold text-black/[0.02] group-hover:text-white/[0.05] absolute -right-4 -top-8 transition-colors duration-700 pointer-events-none select-none tracking-tighter">
-                0{i + 1}
-              </span>
+            <div key={step.title} className="relative overflow-hidden border-b border-black/5 md:border-r last:border-r-0">
+               {/* Scroll Mask Animation Overlay */}
+               <motion.div
+                 initial={{ scaleY: 1 }}
+                 whileInView={{ scaleY: 0 }}
+                 viewport={{ once: true, amount: 0.3 }}
+                 transition={{ 
+                   duration: 1.2, 
+                   delay: i * 0.15, 
+                   ease: [0.16, 1, 0.3, 1] 
+                 }}
+                 className="absolute inset-0 bg-white z-20 origin-top pointer-events-none"
+               />
 
-              <div className="relative z-10 flex flex-col h-full">
-                <span className="text-[10px] font-bold tracking-[0.2em] text-gray-300 group-hover:text-white/40 transition-colors duration-500 mb-12 lg:mb-20 block">
+              <motion.div
+                initial={{ opacity: 0, y: 40 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.3 }}
+                transition={{ 
+                  delay: i * 0.15 + 0.3, 
+                  duration: 1, 
+                  ease: [0.16, 1, 0.3, 1] 
+                }}
+                className="group relative flex flex-col p-8 lg:p-12 cursor-default transition-all duration-700 hover:bg-black min-h-[320px] lg:min-h-[400px]"
+              >
+                {/* LARGE Background Number Accent */}
+                <span className="text-[8rem] font-bold text-black/[0.02] group-hover:text-white/[0.05] absolute -right-4 -top-8 transition-colors duration-700 pointer-events-none select-none tracking-tighter">
                   0{i + 1}
                 </span>
 
-                <h3 className="text-2xl md:text-3xl font-medium tracking-tight mb-4 lg:mb-8 group-hover:text-white group-hover:translate-x-2 transition-all duration-500">
-                  {step.title}
-                </h3>
-                <p className="text-base lg:text-lg text-gray-500 leading-relaxed font-light group-hover:text-gray-400 transition-colors duration-500">
-                  {step.desc}
-                </p>
-                
-                <div className="mt-auto pt-8">
-                  {/* Pushing content line to bottom proportionally */}
-                </div>
-              </div>
+                <div className="relative z-10 flex flex-col h-full">
+                  {/* Spacer for consistency */}
+                  <div className="mb-12 lg:mb-20" />
 
-              {/* Bottom Decorative Line */}
-              <div className="mt-4 w-0 group-hover:w-full h-px bg-white/20 transition-all duration-500 ease-out" />
-            </motion.div>
+                  <h3 className="text-2xl md:text-3xl font-medium tracking-tight mb-4 lg:mb-8 text-black group-hover:text-white group-hover:translate-x-2 transition-all duration-500">
+                    {step.title}
+                  </h3>
+                  <p className="text-base lg:text-lg text-gray-500 leading-relaxed font-light group-hover:text-gray-400 transition-colors duration-500">
+                    {step.desc}
+                  </p>
+                  
+                  {/* Minimal Arrow Slide */}
+                  <div className="mt-auto opacity-0 group-hover:opacity-100 group-hover:translate-x-2 transition-all duration-700 delay-100 hidden md:block self-end">
+                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round" className="text-white/40">
+                       <line x1="7" y1="17" x2="17" y2="7"></line>
+                       <polyline points="7 7 17 7 17 17"></polyline>
+                     </svg>
+                  </div>
+                </div>
+
+                {/* Bottom Decorative Line */}
+                <div className="absolute bottom-0 left-0 w-0 group-hover:w-full h-[1px] bg-white/20 transition-all duration-700 ease-out" />
+              </motion.div>
+            </div>
           ))}
         </div>
       </div>

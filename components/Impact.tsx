@@ -56,7 +56,7 @@ const Impact: React.FC = () => {
               initial={{ opacity: 0, y: 15 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.2 }}
-              transition={{ duration: 1, delay: 0.8, ease: [0.16, 1, 0.3, 1] }}
+              transition={{ duration: 1, delay: 0.6, ease: [0.16, 1, 0.3, 1] }}
             >
               <p className="text-[15px] md:text-lg text-slate-400 leading-relaxed max-w-md">
                 We build custom applications, websites, and digital products for clients worldwide.
@@ -78,7 +78,7 @@ const Impact: React.FC = () => {
                 initial={{ opacity: 0, y: 10 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ delay: i * 0.15 + 1.8, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+                transition={{ delay: i * 0.1 + 0.6, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
                 className="p-5 lg:p-8 border-r border-b border-white/5 flex flex-col justify-between min-h-[120px] lg:min-h-[160px] group transition-colors"
               >
                 <span className="text-3xl lg:text-4xl xl:text-5xl font-light tracking-tight text-white mb-2 lg:mb-4">

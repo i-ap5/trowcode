@@ -12,23 +12,23 @@ const Contact: React.FC = () => {
           viewport={{ once: true }}
         >
           <span className="text-xs font-normal tracking-wider text-gray-500 mb-8 block">Project inquiry</span>
-          <h2 className="text-4xl md:text-5xl lg:text-7xl font-medium tracking-tighter mb-8 selection:bg-white selection:text-black leading-tight">
+          <h2 className="text-3xl md:text-5xl lg:text-5xl font-medium tracking-tighter mb-8 selection:bg-white selection:text-black leading-tight">
             Get in touch
           </h2>
-          <p className="text-lg text-slate-400 max-w-sm font-light leading-relaxed mb-16">
+          <p className="text-base text-slate-400 max-w-sm font-light leading-relaxed mb-16">
             Tell us about your project and we'll get back to you within 24 hours with a production-ready roadmap.
           </p>
 
           <div className="space-y-12">
             <div>
               <p className="text-xs font-normal tracking-wide text-gray-500 mb-4">Direct email</p>
-              <a href="mailto:hello@trowcode.com" className="text-2xl md:text-3xl font-medium hover:text-gray-400 transition-all duration-300 underline underline-offset-8 decoration-gray-800 hover:decoration-white">
+              <a href="mailto:hello@trowcode.com" className="text-xl md:text-2xl font-medium hover:text-gray-400 transition-all duration-300 underline underline-offset-8 decoration-gray-800 hover:decoration-white">
                 hello@trowcode.com
               </a>
             </div>
             <div>
               <p className="text-xs font-normal tracking-wide text-gray-500 mb-4">Location</p>
-              <p className="text-xl text-slate-400 font-light">Kerala, India · Remote worldwide</p>
+              <p className="text-lg text-slate-400 font-light">Kerala, India · Remote worldwide</p>
             </div>
           </div>
         </motion.div>
@@ -49,7 +49,7 @@ const Contact: React.FC = () => {
                   <input
                     type="text"
                     placeholder="Enter your first name"
-                    className="w-full py-4 bg-transparent border-b border-white/10 outline-none focus:border-white focus:bg-white/[0.02] px-3 -mx-3 transition-all duration-500 text-lg font-light placeholder:text-slate-700"
+                    className="w-full py-4 bg-transparent border-b border-white/10 outline-none focus:border-white focus:bg-white/[0.02] px-3 -mx-3 transition-all duration-500 text-base font-light placeholder:text-slate-700"
                   />
                 </div>
               </div>
@@ -59,7 +59,7 @@ const Contact: React.FC = () => {
                   <input
                     type="text"
                     placeholder="Enter your last name"
-                    className="w-full py-4 bg-transparent border-b border-white/10 outline-none focus:border-white focus:bg-white/[0.02] px-3 -mx-3 transition-all duration-500 text-lg font-light placeholder:text-slate-700"
+                    className="w-full py-4 bg-transparent border-b border-white/10 outline-none focus:border-white focus:bg-white/[0.02] px-3 -mx-3 transition-all duration-500 text-base font-light placeholder:text-slate-700"
                   />
                 </div>
               </div>
@@ -85,7 +85,7 @@ const Contact: React.FC = () => {
                   <input
                     type="email"
                     placeholder="Enter your corporate email"
-                    className="w-full py-4 bg-transparent border-b border-white/10 outline-none focus:border-white focus:bg-white/[0.02] px-3 -mx-3 transition-all duration-500 text-lg font-light placeholder:text-slate-700"
+                    className="w-full py-4 bg-transparent border-b border-white/10 outline-none focus:border-white focus:bg-white/[0.02] px-3 -mx-3 transition-all duration-500 text-base font-light placeholder:text-slate-700"
                   />
                 </div>
               </div>

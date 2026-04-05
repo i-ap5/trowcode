@@ -11,7 +11,7 @@ import relish from '@/assets/relish.jpg';
 import spiceroute from '@/assets/spiceroute.jpg';
 import status67 from '@/assets/status67.jpg';
 
-export type ProjectCategory = 'Websites' | 'Mobile apps' | 'Custom software';
+export type ProjectCategory = 'Website' | 'Mobile App' | 'Custom Software';
 
 export interface Project {
     id: string;
@@ -32,7 +32,7 @@ export const projects: Project[] = [
     {
         id: 'living-space',
         title: 'Living Space Interiors',
-        categories: ['Websites'],
+        categories: ['Website'],
         shortDesc: 'Premium interior design showcase and project management ecosystem.',
         fullDesc: `• High-fidelity visual gallery with sub-second lazy loading.
 • Interactive project coordination tools for clients and designers.
@@ -45,7 +45,7 @@ export const projects: Project[] = [
     {
         id: 'letuic',
         title: 'Letuic',
-        categories: ['Websites', 'Mobile apps'],
+        categories: ['Website'],
         shortDesc: 'Forward-thinking business platform with PWA capabilities.',
         fullDesc: `• Progressive Web App with full offline functionality.
 • Modular architecture for plug-and-play business modules.
@@ -58,7 +58,7 @@ export const projects: Project[] = [
     {
         id: 'nexhibit',
         title: 'Nexhibit Arabia',
-        categories: ['Custom software'],
+        categories: ['Website'],
         shortDesc: 'Exhibition design, space booking, and experience-driven brand showcases.',
         fullDesc: `• Comprehensive exhibition planning and management services. 
 • Custom stall fabrication and immersive booth design.
@@ -71,7 +71,7 @@ export const projects: Project[] = [
     {
         id: 'molodost-dubai',
         title: 'Molodost Dubai',
-        categories: ['Websites'],
+        categories: ['Website'],
         shortDesc: 'Luxury digital branding for Dubai exclusive market.',
         fullDesc: `• Immersive parallax scrolling with GSAP animations.
 • Multilingual support (English/Arabic) with automated RTL logic.
@@ -84,7 +84,7 @@ export const projects: Project[] = [
     {
         id: 'status67',
         title: 'Status67',
-        categories: ['Websites'],
+        categories: ['Website'],
         shortDesc: 'Minimalist B2B consulting site focused on lead generation.',
         fullDesc: `• Narrative-driven hero sections for instant credibility.
 • Embedded Calendly widgets with pre-populated user data.
@@ -97,7 +97,7 @@ export const projects: Project[] = [
     {
         id: 'jersey-station',
         title: 'Jersey Station',
-        categories: ['Websites'],
+        categories: ['Website'],
         shortDesc: 'Interactive custom sports merchandise e-commerce.',
         fullDesc: `• Interactive product customizer using HTML5 canvas.
 • Inventory synchronization across multiple warehouses.
@@ -110,34 +110,34 @@ export const projects: Project[] = [
     {
         id: 'ai-billo',
         title: 'AI Billo',
-        categories: ['Websites', 'Mobile apps', 'Custom software'],
+        categories: ['Website'],
         shortDesc: 'Enterprise-grade SaaS for automated invoice processing.',
         fullDesc: `• Processes 10k+ invoices monthly with AI-powered OCR.
 • Secure multi-tenant architecture with role-based dashboards.
 • Real-time ledger syncing and automated bank reconciliation.
 • Seamless integration with Razorpay and Stripe gateways.`,
         link: 'https://www.aibillo.com/',
-        image: aibillo,
+        image: 'https://play-lh.googleusercontent.com/QcasIb2CWs-ZN44x6y3EvWz0Bpv6-GAOv4U8UV4mFIMvfk-JKJd-KaSgtNvSPwjBbzo=w5120-h2880-rw',
         tags: ['Vue.js', 'Laravel', 'AWS', 'OCR'],
     },
     {
         id: 'brofix',
         title: 'Brofix',
-        categories: ['Websites', 'Mobile apps'],
+        categories: ['Website'],
         shortDesc: 'Service marketplace with real-time geolocation matching.',
         fullDesc: `• Instant provider surface matching via geolocation.
 • Comprehensive provider dashboards for gig management.
 • Real-time updates via WebSockets for job status.
 • Built on performant MERN stack for high concurrency.`,
         link: 'https://brofix.in/',
-        image: brofix_img,
-        imageFit: 'contain', 
+        image: 'https://play-lh.googleusercontent.com/mjBZWwDf-AwB70lfM-DAM2qTnFb_Dwx-4wPt6mjks1jrGrpnEDV7TLwiM6Dw=w5120-h2880-rw',
+        imageFit: 'contain',
         tags: ['MERN', 'Socket.io', 'Maps'],
     },
     {
         id: 'malabar-lands',
         title: 'Malabar Lands',
-        categories: ['Websites'],
+        categories: ['Website'],
         shortDesc: 'Advanced real estate platform with 360° virtual tours.',
         fullDesc: `• Dynamic property search with sub-second filtering.
 • High-resolution 360-degree virtual tours for villas.
@@ -150,7 +150,7 @@ export const projects: Project[] = [
     {
         id: 'novatek',
         title: 'Novatek Solutions',
-        categories: ['Websites'],
+        categories: ['Website'],
         shortDesc: 'Technical services leadership and case study platform.',
         fullDesc: `• Engaging case study carousels revealing ROI narratives.
 • Video testimonial sliders for enhanced social proof.
@@ -163,7 +163,7 @@ export const projects: Project[] = [
     {
         id: 'relish-herbals',
         title: 'Relish Herbals',
-        categories: ['Websites'],
+        categories: ['Website'],
         shortDesc: 'Wellness e-commerce with subscription builders.',
         fullDesc: `• Guided health-goal quizzes with product matching.
 • Flexible subscription model with recurring auto-ship.
@@ -176,7 +176,7 @@ export const projects: Project[] = [
     {
         id: 'spice-route',
         title: 'SpiceRoute Exports',
-        categories: ['Websites'],
+        categories: ['Website'],
         shortDesc: 'B2B spice trading with dynamic compliance tools.',
         fullDesc: `• Dynamic bulk order calculators for global weights.
 • Automated export documentation generator for customs.
@@ -191,7 +191,7 @@ export const projects: Project[] = [
     {
         id: 'ai-billo-app',
         title: 'AI Billo App',
-        categories: ['Mobile apps'],
+        categories: ['Mobile App'],
         shortDesc: 'On-the-go invoicing with OCR and offline syncing.',
         fullDesc: `• Instant receipt-to-invoice OCR technology.
 • Bidirectional Firestore syncing with local SQLite backup.
@@ -203,7 +203,7 @@ export const projects: Project[] = [
     {
         id: 'brofix-app',
         title: 'Brofix App',
-        categories: ['Mobile apps'],
+        categories: ['Mobile App'],
         shortDesc: 'Service connection app with live GPS tracking.',
         fullDesc: `• Real-time provider tracking with ETA adjustments.
 • In-app diagnostics via encrypted video chat.
@@ -215,7 +215,7 @@ export const projects: Project[] = [
     {
         id: 'letuic-app',
         title: 'LETUIC App',
-        categories: ['Mobile apps'],
+        categories: ['Mobile App'],
         shortDesc: 'Business platform expansion with NFC payments.',
         fullDesc: `• Digital wallet supporting UPI and card micropayments.
 • NFC tap-to-pay functionality for physical stores.
@@ -227,7 +227,7 @@ export const projects: Project[] = [
     {
         id: 'farmfresh-kerala',
         title: 'FarmFresh Kerala',
-        categories: ['Mobile apps'],
+        categories: ['Mobile App'],
         shortDesc: 'Direct farmer-to-consumer produce marketplace.',
         fullDesc: `• Freshness-sorted crop listings inspired by local geography.
 • Precise delivery tracking with map-based route plotting.
@@ -239,7 +239,7 @@ export const projects: Project[] = [
     {
         id: 'wellnesstrack-pro',
         title: 'WellnessTrack Pro',
-        categories: ['Mobile apps'],
+        categories: ['Mobile App'],
         shortDesc: 'Holistic wellness sync for wearable devices.',
         fullDesc: `• Scan-to-schedule remedy trackers with reminders.
 • HealthKit & Wear OS integration for vital biometric sync.
@@ -253,7 +253,7 @@ export const projects: Project[] = [
     {
         id: 'koduvali-erp',
         title: 'Koduvali Furniture ERP',
-        categories: ['Custom software'],
+        categories: ['Custom Software'],
         shortDesc: 'Woodworking manufacturing and inventory ERP.',
         fullDesc: `• Dynamic BOM explosion as design parameters change.
 • Inventory forecasting based on seasonal demand signals.
@@ -265,7 +265,7 @@ export const projects: Project[] = [
     {
         id: 'erp-suite',
         title: 'ERP Suite',
-        categories: ['Custom software'],
+        categories: ['Custom Software'],
         shortDesc: 'Operational nervous system for manufacturers.',
         fullDesc: `• Sales pipeline forecasting using history-trained ML.
 • RFID-linked multi-warehouse inventory traceability.
@@ -277,7 +277,7 @@ export const projects: Project[] = [
     {
         id: 'crm-elite',
         title: 'CRM Elite',
-        categories: ['Custom software'],
+        categories: ['Custom Software'],
         shortDesc: 'Behavior-driven lead scoring and revenue engine.',
         fullDesc: `• Probability-weighted visual sales pipeline stages.
 • Behavioral scoring based on engagement signals.
@@ -289,7 +289,7 @@ export const projects: Project[] = [
     {
         id: 'payroll-master',
         title: 'PayrollMaster',
-        categories: ['Custom software'],
+        categories: ['Custom Software'],
         shortDesc: 'Biometric HR and statutory compliance engine.',
         fullDesc: `• Facial recognition attendance through mobile cameras.
 • Automated deductions for PF, ESI, and localized taxes.
@@ -301,7 +301,7 @@ export const projects: Project[] = [
     {
         id: 'task-flow',
         title: 'TaskFlow',
-        categories: ['Custom software'],
+        categories: ['Custom Software'],
         shortDesc: 'Kanban-to-Gantt team velocity accelerator.',
         fullDesc: `• Fluid Kanban boards with critical path timeline views.
 • NLP parsers for effort estimation and priority sorting.
@@ -313,7 +313,7 @@ export const projects: Project[] = [
     {
         id: 'hospital-sync',
         title: 'HospitalSync',
-        categories: ['Custom software'],
+        categories: ['Custom Software'],
         shortDesc: 'Clinic ecosystem with digital EMR and Telehealth.',
         fullDesc: `• Patient self-scheduling with WhatsApp confirmations.
 • FHIR-compliant EMR searchable by ICD codes.
@@ -325,7 +325,7 @@ export const projects: Project[] = [
     {
         id: 'retail-pulse',
         title: 'RetailPulse',
-        categories: ['Custom software'],
+        categories: ['Custom Software'],
         shortDesc: 'POS and footfall analytics for storefront empires.',
         fullDesc: `• High-volume POS handling 1000+ hourly transactions.
 • Footfall heatmaps aggregated from CCTV integrations.
@@ -337,7 +337,7 @@ export const projects: Project[] = [
     {
         id: 'edu-track',
         title: 'EduTrack',
-        categories: ['Custom software'],
+        categories: ['Custom Software'],
         shortDesc: 'Unified school ecosystem for grading and admin.',
         fullDesc: `• Real-time grade and attendance tracking portals.
 • Integrated fee gateways with auto-debit functionality.
@@ -349,7 +349,7 @@ export const projects: Project[] = [
     {
         id: 'hospitality-hub',
         title: 'HospitalityHub',
-        categories: ['Custom software'],
+        categories: ['Custom Software'],
         shortDesc: 'Hotel operations and keyed-revenue manager.',
         fullDesc: `• Facial recognition for keyless room entries.
 • Housekeeping schedulers based on real-time checkouts.
@@ -361,7 +361,7 @@ export const projects: Project[] = [
     {
         id: 'logistics-pro',
         title: 'LogisticsPro',
-        categories: ['Custom software'],
+        categories: ['Custom Software'],
         shortDesc: 'Supply chain optimizer with voice-guided picking.',
         fullDesc: `• Voice-guided warehouse picking on rugged tablets.
 • Fleet telematics streaming GPS and fuel-burn data.
@@ -373,7 +373,7 @@ export const projects: Project[] = [
     {
         id: 'mfg-mrp',
         title: 'ManufacturingMRP',
-        categories: ['Custom software'],
+        categories: ['Custom Software'],
         shortDesc: 'Production line sequencer and QC tracker.',
         fullDesc: `• BOM explosions visualizing complex assemblies.
 • Capacity planners for cross-shift machine leveling.
@@ -385,7 +385,7 @@ export const projects: Project[] = [
     {
         id: 'hr-360',
         title: 'HR360',
-        categories: ['Custom software'],
+        categories: ['Custom Software'],
         shortDesc: 'Full talent lifecycle and performance platform.',
         fullDesc: `• Applicant tracking with resume-to-role matching.
 • Onboarding portals with buddy assignment logic.
@@ -397,7 +397,7 @@ export const projects: Project[] = [
     {
         id: 'field-service-genius',
         title: 'FieldServiceGenius',
-        categories: ['Custom software'],
+        categories: ['Custom Software'],
         shortDesc: 'AR-guided repair and dispatch management.',
         fullDesc: `• Augmented Reality overlays for remote expert help.
 • NFC-verified parts inventory checkout on-site.
@@ -409,7 +409,7 @@ export const projects: Project[] = [
     {
         id: 'inventory-iq',
         title: 'InventoryIQ',
-        categories: ['Custom software'],
+        categories: ['Custom Software'],
         shortDesc: 'RFID-enabled stock intelligence system.',
         fullDesc: `• Perpetual inventory counting via gateway RFID portals.
 • ABC analysis categorizing items for optimized capital.
@@ -421,7 +421,7 @@ export const projects: Project[] = [
     {
         id: 'subscription-flow',
         title: 'SubscriptionFlow',
-        categories: ['Custom software'],
+        categories: ['Custom Software'],
         shortDesc: 'Recurring revenue and churn prediction manager.',
         fullDesc: `• Usage-drop analysis for proactive churn prevention.
 • Automated dunning sequences via SMS/WhatsApp escalations.
@@ -433,7 +433,7 @@ export const projects: Project[] = [
     {
         id: 'compliance-guard',
         title: 'ComplianceGuard',
-        categories: ['Custom software'],
+        categories: ['Custom Software'],
         shortDesc: 'Regulatory adherence and audit automation.',
         fullDesc: `• Checklist populating from real-time transaction logs.
 • Vendor ESG scoring and risk registers.
@@ -445,7 +445,7 @@ export const projects: Project[] = [
     {
         id: 'analytics-forge',
         title: 'AnalyticsForge',
-        categories: ['Custom software'],
+        categories: ['Custom Software'],
         shortDesc: 'Custom BI layers atop complex data lakes.',
         fullDesc: `• No-code dashboard builders for executive KPIs.
 • Real-time anomaly detectors alerting on sales dips.

@@ -10,9 +10,9 @@ const Footer: React.FC = () => {
              <div className="lg:w-1/2">
                 <div className="flex items-center gap-4 mb-8 cursor-pointer" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
                    <Logo className="size-10 fill-white" />
-                   <span className="text-4xl font-medium tracking-tight">Trowcode</span>
+                   <span className="text-2xl md:text-3xl font-medium tracking-tight">Trowcode</span>
                 </div>
-                <p className="text-gray-400 text-lg font-light leading-relaxed max-w-sm">
+                <p className="text-gray-400 text-base font-light leading-relaxed max-w-sm">
                    A software development agency building digital products for clients worldwide. Quality and simplicity.
                 </p>
              </div>
@@ -20,15 +20,15 @@ const Footer: React.FC = () => {
              <div className="flex flex-wrap gap-16 lg:gap-32">
                 <div className="flex flex-col gap-6">
                    <span className="text-sm font-medium text-white/50 mb-2 uppercase tracking-widest">Company</span>
-                   <a href="/#solutions" className="text-lg text-white hover:text-gray-300 transition-colors">Services</a>
-                   <a href="/#methodology" className="text-lg text-white hover:text-gray-300 transition-colors">Process</a>
-                   <a href="/portfolio" className="text-lg text-white hover:text-gray-300 transition-colors">Portfolio</a>
+                   <a href="/#solutions" className="text-base text-white hover:text-gray-300 transition-colors">Services</a>
+                   <a href="/#methodology" className="text-base text-white hover:text-gray-300 transition-colors">Process</a>
+                   <a href="/portfolio" className="text-base text-white hover:text-gray-300 transition-colors">Portfolio</a>
                 </div>
                 <div className="flex flex-col gap-6">
                    <span className="text-sm font-medium text-white/50 mb-2 uppercase tracking-widest">Connect</span>
-                   <a href="#contact" className="text-lg text-white hover:text-gray-300 transition-colors">Contact</a>
-                   <a href="mailto:hello@trowcode.com" className="text-lg text-white hover:text-gray-300 transition-colors">Email</a>
-                   <a href="#" className="text-lg text-white hover:text-gray-300 transition-colors">LinkedIn</a>
+                   <a href="#contact" className="text-base text-white hover:text-gray-300 transition-colors">Contact</a>
+                   <a href="mailto:hello@trowcode.com" className="text-base text-white hover:text-gray-300 transition-colors">Email</a>
+                   <a href="#" className="text-base text-white hover:text-gray-300 transition-colors">LinkedIn</a>
                 </div>
              </div>
           </div>
