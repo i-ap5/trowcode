@@ -1,16 +1,14 @@
-import aibillo from '@/assets/aibillo.jpg';
 import aibillo_mob from '@/assets/aibillo_app.webp';
-import brofix_img from '@/assets/brofix.jpg';
-import brofix_app from '@/assets/brofix_app.jpg';
-import letuic_app from '@/assets/letuic_app.jpg';
+import brofix_app from '@/assets/brofix_app.webp';
+import letuic_app from '@/assets/letuic_app.webp';
 // import livingspace from '@/assets/livingspace.jpg';
-import malabarlands from '@/assets/malabarlands.jpg';
-import molodost from '@/assets/molodost.jpg';
-import novatek from '@/assets/novatek.jpg';
-import relish from '@/assets/relish.jpg';
-import spiceroute from '@/assets/spiceroute.jpg';
-import status67 from '@/assets/status67.jpg';
-import jersey_station from '@/assets/jerseystation.png';
+import malabarlands from '@/assets/malabarlands.webp';
+import molodost from '@/assets/molodost.webp';
+import novatek from '@/assets/novatek.webp';
+import relish from '@/assets/relish.webp';
+import spiceroute from '@/assets/spiceroute.webp';
+import status67 from '@/assets/status67.webp';
+import jersey_station from '@/assets/jerseystation.webp';
 
 
 export type ProjectCategory = 'Website' | 'Mobile App' | 'Custom Software';
