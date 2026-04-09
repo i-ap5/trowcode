@@ -161,6 +161,25 @@ export const projects: Project[] = [
         tags: ['Next.js', 'SEO', 'GSAP'],
     },
     {
+        id: 'acoudits',
+        title: 'Acoudits',
+        categories: ['Website'],
+        shortDesc: 'Empowering modern enterprises with strategic financial clarity through rigorous audits and global advisory.',
+        fullDesc: `• Strategic Auditing & Assurance with regulatory transparency.
+• Comprehensive tax consulting and GST compliance management.
+• Boutique financial advisory for valuation and wealth planning.
+• Management consulting focused on organizational performance.
+• Specialized audits for risk management and cybersecurity.`,
+        link: 'https://www.acoudits.com/',
+        image: 'https://images.unsplash.com/photo-1554224155-169746727638?q=80&w=2000',
+        tags: ['Financial', 'Auditing', 'Consulting'],
+        stats: [
+            { label: 'Projects', value: '270+' },
+            { label: 'Partners', value: '21+' },
+            { label: 'Years', value: '8+' }
+        ]
+    },
+    {
         id: 'relish-herbals',
         title: 'Relish Herbals',
         categories: ['Website'],
