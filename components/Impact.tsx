@@ -68,7 +68,7 @@ const Impact: React.FC = () => {
           {/* Minimal Stats Layout */}
           <div className="grid grid-cols-2 lg:grid-cols-4 border-t border-l border-white/5">
             {[
-              { value: '150+', label: 'Products built' },
+              { value: '50+', label: 'Products built' },
               { value: '4 Weeks', label: 'Average launch time' },
               { value: '100%', label: 'In-house team' },
               { value: '24/7', label: 'Client support' },
