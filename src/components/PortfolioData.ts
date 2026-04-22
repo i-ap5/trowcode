@@ -1,7 +1,10 @@
 import aibillo_mob from '@/assets/aibillo_app.webp';
+import aibillo_web from '@/assets/aibillo.webp';
 import brofix_app from '@/assets/brofix_app.webp';
+import brofix_web from '@/assets/brofix.webp';
 import letuic_app from '@/assets/letuic_app.webp';
-// import livingspace from '@/assets/livingspace.jpg';
+import livingspace from '@/assets/livingspace.webp';
+import koduvali_erp from '@/assets/koduvali_erp.webp';
 import malabarlands from '@/assets/malabarlands.webp';
 import molodost from '@/assets/molodost.webp';
 import novatek from '@/assets/novatek.webp';
@@ -9,6 +12,7 @@ import relish from '@/assets/relish.webp';
 import spiceroute from '@/assets/spiceroute.webp';
 import status67 from '@/assets/status67.webp';
 import jersey_station from '@/assets/jerseystation.webp';
+import wellnesstrack_pro from '@/assets/wellnesstrack_pro.webp';
 
 
 export type ProjectCategory = 'Website' | 'Mobile App' | 'Custom Software';
@@ -39,7 +43,7 @@ export const projects: Project[] = [
 • Interactive project coordination tools for clients and designers.
 • High-fidelity visual gallery with sub-second lazy loading.`,
         link: 'https://livingspaceinteriors.in/',
-        image: 'https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?q=80&w=2000',
+        image: livingspace,
         tags: ['Interior Design', 'Portfolio', 'Management'],
     },
     {
@@ -117,7 +121,7 @@ export const projects: Project[] = [
 • Secure multi-tenant architecture with role-based dashboards.
 • Seamless integration with Razorpay and Stripe gateways.`,
         link: 'https://www.aibillo.com/',
-        image: 'https://play-lh.googleusercontent.com/QcasIb2CWs-ZN44x6y3EvWz0Bpv6-GAOv4U8UV4mFIMvfk-JKJd-KaSgtNvSPwjBbzo=w5120-h2880-rw',
+        image: aibillo_web,
         tags: ['Vue.js', 'Laravel', 'AWS', 'OCR'],
     },
     {
@@ -130,7 +134,7 @@ export const projects: Project[] = [
 • Committed to bringing modern technology back to life.
 • Quick turnaround times for essential device maintenance.`,
         link: 'https://brofix.in/',
-        image: 'https://play-lh.googleusercontent.com/mjBZWwDf-AwB70lfM-DAM2qTnFb_Dwx-4wPt6mjks1jrGrpnEDV7TLwiM6Dw=w5120-h2880-rw',
+        image: brofix_web,
         imageFit: 'contain',
         tags: ['MERN', 'Socket.io', 'Maps'],
     },
@@ -264,7 +268,7 @@ export const projects: Project[] = [
 • HealthKit & Wear OS integration for vital biometric sync.
 • End-to-end encrypted progress charts and forums.
 • Seamless bridge to Relish Herbals inventory.`,
-        image: 'https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?q=80&w=2070',
+        image: wellnesstrack_pro,
         tags: ['HealthKit', 'Wearable', 'Encrypted'],
     },
 
@@ -278,7 +282,7 @@ export const projects: Project[] = [
 • Inventory forecasting based on seasonal demand signals.
 • Visual artisan assignment boards for workshop efficiency.
 • 60% reduction in stockouts through just-in-time logic.`,
-        image: 'https://plus.unsplash.com/premium_photo-1682147364229-f5faa0fd9bd7?q=80&w=1740&auto=format',
+        image: koduvali_erp,
         tags: ['ERP', 'Mfg', 'Forecasting'],
     },
     {
