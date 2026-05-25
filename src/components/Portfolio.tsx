@@ -1,15 +1,33 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { motion } from 'framer-motion';
 import { Link, useLocation } from 'react-router-dom';
 import { projects, ProjectCategory } from './PortfolioData';
 
 const categories: (ProjectCategory | 'All')[] = ['All', 'Website', 'Mobile App', 'Custom Software'];
 
-const SimpleMockup: React.FC<{ image: string; title: string; subtitle: string; link?: string; fit?: 'cover' | 'contain' | 'scale-down'; isMobile?: boolean }> = ({ image, title, subtitle, link, fit, isMobile }) => {
+// ── Adaptive iframe concurrency manager ────────────────────────────
+// Dynamically caps concurrent iframes based on device capability.
+// Phone: 1 | Tablet: 2 | Desktop: 3
+function getMaxIframes(): number {
+  if (typeof window === 'undefined') return 1;
+  const w = window.innerWidth;
+  if (w < 768) return 1;
+  if (w < 1024) return 2;
+  return 3;
+}
+
+let activeIframeCount = 0;
+// ────────────────────────────────────────────────────────────────────
+
+const SimpleMockup: React.FC<{ image: string; title: string; subtitle: string; link?: string; fit?: 'cover' | 'contain' | 'scale-down'; isMobile?: boolean; projectId: string }> = ({ image, title, subtitle, link, fit, isMobile, projectId }) => {
   const [isLiveReady, setIsLiveReady] = useState(false);
   const [scale, setScale] = useState(0.25);
+  const [shouldLoad, setShouldLoad] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
+  const cardRef = useRef<HTMLDivElement>(null);
+  const hasSlotRef = useRef(false);
 
+  // ── Scale calculator ──
   useEffect(() => {
     const updateScale = () => {
       if (containerRef.current) {
@@ -23,8 +41,48 @@ const SimpleMockup: React.FC<{ image: string; title: string; subtitle: string; l
     return () => window.removeEventListener('resize', updateScale);
   }, []);
 
+  // ── IntersectionObserver + slot management (single effect, no race) ──
+  useEffect(() => {
+    const el = cardRef.current;
+    if (!el || isMobile || !link) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          // Card entered viewport — try to get a slot
+          if (!hasSlotRef.current && activeIframeCount < getMaxIframes()) {
+            activeIframeCount++;
+            hasSlotRef.current = true;
+            setShouldLoad(true);
+          }
+        } else {
+          // Card left viewport — release slot
+          if (hasSlotRef.current) {
+            activeIframeCount--;
+            hasSlotRef.current = false;
+            setShouldLoad(false);
+            setIsLiveReady(false);
+          }
+        }
+      },
+      { rootMargin: '200px 0px', threshold: 0 }
+    );
+
+    observer.observe(el);
+
+    return () => {
+      observer.disconnect();
+      if (hasSlotRef.current) {
+        activeIframeCount--;
+        hasSlotRef.current = false;
+      }
+    };
+  }, [isMobile, link]);
+
+  const shouldRenderIframe = !isMobile && link && shouldLoad;
+
   return (
-    <div className="relative w-full h-full flex flex-col items-center pt-2 group/item">
+    <div ref={cardRef} className="relative w-full h-full flex flex-col items-center pt-2 group/item">
       {/* 
           UPPERCASE BOLD Minimal Title 
           - Shifted top padding to h-[12%] to ensure text is never hit by frame.
@@ -64,16 +122,26 @@ const SimpleMockup: React.FC<{ image: string; title: string; subtitle: string; l
               alt={title}
               className={`absolute inset-0 w-full h-full ${fit === 'contain' ? 'object-contain' : 'object-cover'} transition-opacity duration-1000 z-10 ${isLiveReady ? 'opacity-0' : 'opacity-100'}`}
             />
-            {!isMobile && link && (
+            {shouldRenderIframe && (
               <div className={`absolute inset-0 w-full h-full transition-opacity duration-1000 z-0 ${isLiveReady ? 'opacity-100' : 'opacity-0'} pointer-events-none`}>
                 <iframe
                   src={link}
                   title={title}
-                  loading="lazy"
                   onLoad={() => setIsLiveReady(true)}
                   className="w-[1280px] h-[800px] border-none origin-top-left"
                   style={{ transform: `scale(${scale})` }}
                 />
+              </div>
+            )}
+            {/* Loading indicator — visible while iframe is loading */}
+            {shouldRenderIframe && !isLiveReady && (
+              <div className="absolute inset-0 z-15 flex flex-col items-center justify-center gap-2 pointer-events-none">
+                <div className="flex items-center gap-1">
+                  <span className="w-1 h-1 bg-white/60 rounded-full animate-pulse" style={{ animationDelay: '0ms' }} />
+                  <span className="w-1 h-1 bg-white/60 rounded-full animate-pulse" style={{ animationDelay: '150ms' }} />
+                  <span className="w-1 h-1 bg-white/60 rounded-full animate-pulse" style={{ animationDelay: '300ms' }} />
+                </div>
+                <span className="text-[8px] md:text-[10px] text-white/50 font-light tracking-[0.2em] uppercase">Loading live preview</span>
               </div>
             )}
             <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent pointer-events-none z-20" />
@@ -153,6 +221,7 @@ const Portfolio: React.FC<PortfolioProps> = ({ limit = 999, showExploreButton })
                     link={project.link}
                     fit={project.imageFit}
                     isMobile={isMobileApp}
+                    projectId={project.id}
                   />
                 </div>
 
