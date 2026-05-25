@@ -1,31 +1,66 @@
-import React, { useState, useEffect, useRef, useCallback } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
 import { Link, useLocation } from 'react-router-dom';
 import { projects, ProjectCategory } from './PortfolioData';
 
 const categories: (ProjectCategory | 'All')[] = ['All', 'Website', 'Mobile App', 'Custom Software'];
 
-// ── Adaptive iframe concurrency manager ────────────────────────────
-// Dynamically caps concurrent iframes based on device capability.
-// Phone: 1 | Tablet: 2 | Desktop: 3
-function getMaxIframes(): number {
-  if (typeof window === 'undefined') return 1;
-  const w = window.innerWidth;
-  if (w < 768) return 1;
-  if (w < 1024) return 2;
-  return 3;
+// ── Global LRU Iframe Manager ──────────────────────────────────────
+// Caps iframes safely but doesn't instantly destroy them on scroll.
+// Keeps them loaded until the slot is needed by a newly visible card.
+const getMaxIframes = () => {
+  if (typeof window === 'undefined') return 2;
+  return window.innerWidth < 768 ? 2 : window.innerWidth < 1024 ? 3 : 4;
+};
+
+const activeIframes: string[] = []; // LRU queue of mounted projectIds
+const visibleIframes = new Set<string>();
+const subscribers = new Map<string, (mounted: boolean) => void>();
+
+function mountIframe(projectId: string) {
+  if (!activeIframes.includes(projectId)) {
+    activeIframes.push(projectId);
+    
+    if (activeIframes.length > getMaxIframes()) {
+      // Find oldest non-visible iframe
+      const oldestNonVisibleIdx = activeIframes.findIndex(id => !visibleIframes.has(id));
+      let removedId: string;
+      if (oldestNonVisibleIdx !== -1) {
+        removedId = activeIframes.splice(oldestNonVisibleIdx, 1)[0];
+      } else {
+        removedId = activeIframes.shift()!; // remove oldest even if visible (fallback)
+      }
+      const notify = subscribers.get(removedId);
+      if (notify) notify(false);
+    }
+    
+    const notify = subscribers.get(projectId);
+    if (notify) notify(true);
+  } else {
+    // If already active, move it to the end (most recently used)
+    const idx = activeIframes.indexOf(projectId);
+    activeIframes.splice(idx, 1);
+    activeIframes.push(projectId);
+  }
 }
 
-let activeIframeCount = 0;
+function handleCardVisibility(projectId: string, visible: boolean) {
+  if (visible) {
+    visibleIframes.add(projectId);
+    mountIframe(projectId);
+  } else {
+    visibleIframes.delete(projectId);
+  }
+}
 // ────────────────────────────────────────────────────────────────────
 
 const SimpleMockup: React.FC<{ image: string; title: string; subtitle: string; link?: string; fit?: 'cover' | 'contain' | 'scale-down'; isMobile?: boolean; projectId: string }> = ({ image, title, subtitle, link, fit, isMobile, projectId }) => {
   const [isLiveReady, setIsLiveReady] = useState(false);
   const [scale, setScale] = useState(0.25);
-  const [shouldLoad, setShouldLoad] = useState(false);
+  const [isMounted, setIsMounted] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
   const cardRef = useRef<HTMLDivElement>(null);
-  const hasSlotRef = useRef(false);
+  const timeoutRef = useRef<NodeJS.Timeout | null>(null);
 
   // ── Scale calculator ──
   useEffect(() => {
@@ -41,7 +76,24 @@ const SimpleMockup: React.FC<{ image: string; title: string; subtitle: string; l
     return () => window.removeEventListener('resize', updateScale);
   }, []);
 
-  // ── IntersectionObserver + slot management (single effect, no race) ──
+  // ── Register with LRU Manager ──
+  useEffect(() => {
+    if (isMobile || !link) return;
+    
+    subscribers.set(projectId, (mounted: boolean) => {
+      setIsMounted(mounted);
+      if (!mounted) setIsLiveReady(false);
+    });
+
+    return () => {
+      subscribers.delete(projectId);
+      visibleIframes.delete(projectId);
+      const idx = activeIframes.indexOf(projectId);
+      if (idx !== -1) activeIframes.splice(idx, 1);
+    };
+  }, [projectId, isMobile, link]);
+
+  // ── IntersectionObserver: delayed mount when visible ──
   useEffect(() => {
     const el = cardRef.current;
     if (!el || isMobile || !link) return;
@@ -49,37 +101,26 @@ const SimpleMockup: React.FC<{ image: string; title: string; subtitle: string; l
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
-          // Card entered viewport — try to get a slot
-          if (!hasSlotRef.current && activeIframeCount < getMaxIframes()) {
-            activeIframeCount++;
-            hasSlotRef.current = true;
-            setShouldLoad(true);
-          }
+          // Delay load to ignore fast scrolling
+          timeoutRef.current = setTimeout(() => {
+            handleCardVisibility(projectId, true);
+          }, 400); 
         } else {
-          // Card left viewport — release slot
-          if (hasSlotRef.current) {
-            activeIframeCount--;
-            hasSlotRef.current = false;
-            setShouldLoad(false);
-            setIsLiveReady(false);
-          }
+          if (timeoutRef.current) clearTimeout(timeoutRef.current);
+          handleCardVisibility(projectId, false);
         }
       },
-      { rootMargin: '200px 0px', threshold: 0 }
+      { rootMargin: '0px 0px', threshold: 0.1 } // triggers when 10% is visible
     );
 
     observer.observe(el);
-
     return () => {
+      if (timeoutRef.current) clearTimeout(timeoutRef.current);
       observer.disconnect();
-      if (hasSlotRef.current) {
-        activeIframeCount--;
-        hasSlotRef.current = false;
-      }
     };
-  }, [isMobile, link]);
+  }, [projectId, isMobile, link]);
 
-  const shouldRenderIframe = !isMobile && link && shouldLoad;
+  const shouldRenderIframe = !isMobile && link && isMounted;
 
   return (
     <div ref={cardRef} className="relative w-full h-full flex flex-col items-center pt-2 group/item">
