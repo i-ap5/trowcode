@@ -267,6 +267,12 @@ const Portfolio: React.FC<PortfolioProps> = ({ limit = 999, showExploreButton })
                 </div>
 
                 <div className="flex flex-col gap-3 mt-6 px-0 items-start text-left">
+                  {project.status && (
+                    <span className="inline-flex items-center gap-1.5 px-2.5 py-1 border border-black/15 text-black/70 text-[9px] md:text-[10px] font-semibold uppercase tracking-[0.15em] rounded-full">
+                      <span className="w-1.5 h-1.5 bg-amber-500 rounded-full animate-pulse" />
+                      {project.status}
+                    </span>
+                  )}
                   <h3 className="text-lg md:text-xl lg:text-2xl font-normal leading-tight tracking-tight">
                     <span className="font-medium">{project.title}:</span>
                     <span className="text-gray-400 md:text-gray-500 ml-1 font-light group-hover:text-black transition-colors duration-500">

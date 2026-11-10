@@ -13,6 +13,10 @@ import spiceroute from '@/assets/spiceroute.webp';
 import status67 from '@/assets/status67.webp';
 import jersey_station from '@/assets/jerseystation.webp';
 import wellnesstrack_pro from '@/assets/wellnesstrack_pro.webp';
+import concetto from '@/assets/concetto.webp';
+import libertyexporters from '@/assets/libertyexporters.webp';
+import paulberg from '@/assets/paulberg.webp';
+import labelwe from '@/assets/labelwe.webp';
 
 
 export type ProjectCategory = 'Website' | 'Mobile App' | 'Custom Software';
@@ -28,11 +32,65 @@ export interface Project {
     imageFit?: 'cover' | 'contain' | 'scale-down'; // To handle landscape images that break
     techStack?: string[];
     tags?: string[];
+    status?: 'In Development';
     stats?: { label: string; value: string }[];
 }
 
 export const projects: Project[] = [
     // --- TOP SELECTED PROJECTS (ORDERED BY USER REQUEST) ---
+    {
+        id: 'concetto-design',
+        title: 'Concetto Design Co',
+        categories: ['Website'],
+        status: 'In Development',
+        shortDesc: 'Architecture and interior design studio crafting homes, commercial and hospitality spaces across Kerala.',
+        fullDesc: `• Calicut-based architecture practice with 400+ homes delivered over 15 years.
+• Residential, commercial, hospitality and landscape design under one roof.
+• End-to-end interior fit-outs from structure to furniture and lighting.
+• Image-rich project showcase built on Next.js with optimized media delivery.`,
+        link: 'https://cdco.vercel.app/',
+        image: concetto,
+        tags: ['Architecture', 'Interiors', 'Next.js'],
+    },
+    {
+        id: 'liberty-exporters',
+        title: 'Liberty Exporters',
+        categories: ['Website'],
+        shortDesc: 'Direct exporter of organic fertilizers, spices, agricultural produce and processed foods from India.',
+        fullDesc: `• Global B2B export platform for organic fertilizers, spices and farm products.
+• Structured product catalogue across fertilizers, agriculture, spices and foods.
+• Private-label and custom packaging enquiries for international buyers.
+• Fast, SEO-ready Next.js build for worldwide discoverability.`,
+        link: 'https://www.libertyexporters.in/',
+        image: libertyexporters,
+        tags: ['Export', 'B2B', 'Next.js'],
+    },
+    {
+        id: 'paul-berg',
+        title: 'Paul Berg',
+        categories: ['Website'],
+        shortDesc: "Men's fashion label from Calicut offering formal, casual and ethnic wear with family matching sets.",
+        fullDesc: `• Brand site for a Kerala menswear label by Club In Fashion Studio.
+• Collections spanning formal, casual and ethnic wear.
+• Kids and men matching traditional wear for festive occasions.
+• Editorial, lookbook-style layout built to elevate the brand.`,
+        link: 'https://www.paulberg.in/',
+        image: paulberg,
+        tags: ['Fashion', 'Menswear', 'Brand'],
+    },
+    {
+        id: 'label-we',
+        title: 'Label We',
+        categories: ['Website'],
+        shortDesc: 'Online womenswear store curating modern silhouettes and everyday staples from independent designers.',
+        fullDesc: `• E-commerce storefront for curated womenswear from local designers.
+• Seasonal collections and new-drop launches.
+• Customer accounts, shop filtering and streamlined checkout.
+• Free shipping and easy-returns messaging built into the journey.`,
+        link: 'https://www.labelwe.com/',
+        image: labelwe,
+        tags: ['E-comm', 'Fashion', 'Womenswear'],
+    },
     {
         id: 'living-space',
         title: 'Living Space Interiors',
