@@ -259,7 +259,7 @@ const Portfolio: React.FC<PortfolioProps> = ({ limit = 999, showExploreButton })
                     image={project.image}
                     title={project.title}
                     subtitle={project.categories.join(' & ')}
-                    link={project.link}
+                    link={project.disableLivePreview ? undefined : project.link}
                     fit={project.imageFit}
                     isMobile={isMobileApp}
                     projectId={project.id}

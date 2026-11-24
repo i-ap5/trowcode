@@ -17,6 +17,9 @@ import concetto from '@/assets/concetto.webp';
 import libertyexporters from '@/assets/libertyexporters.webp';
 import paulberg from '@/assets/paulberg.webp';
 import labelwe from '@/assets/labelwe.webp';
+import whitebucks from '@/assets/whitebucks.webp';
+import signaturebylsi from '@/assets/signaturebylsi.webp';
+import mizhy from '@/assets/mizhy.webp';
 
 
 export type ProjectCategory = 'Website' | 'Mobile App' | 'Custom Software';
@@ -30,6 +33,7 @@ export interface Project {
     link?: string;
     image: string;
     imageFit?: 'cover' | 'contain' | 'scale-down'; // To handle landscape images that break
+    disableLivePreview?: boolean; // Site blocks iframe embedding (X-Frame-Options), show static image only
     techStack?: string[];
     tags?: string[];
     status?: 'In Development';
@@ -38,6 +42,19 @@ export interface Project {
 
 export const projects: Project[] = [
     // --- TOP SELECTED PROJECTS (ORDERED BY USER REQUEST) ---
+    {
+        id: 'living-space',
+        title: 'Living Space Interiors',
+        categories: ['Website'],
+        shortDesc: 'Premium architectural and interior masterpieces for luxury homes and leading commercial spaces.',
+        fullDesc: `• Discover India's finest architectural and interior masterpieces.
+• Specializing in premium designs for luxury homes and commercial spaces.
+• Interactive project coordination tools for clients and designers.
+• High-fidelity visual gallery with sub-second lazy loading.`,
+        link: 'https://livingspaceinteriors.in/',
+        image: livingspace,
+        tags: ['Interior Design', 'Portfolio', 'Management'],
+    },
     {
         id: 'concetto-design',
         title: 'Concetto Design Co',
@@ -92,19 +109,6 @@ export const projects: Project[] = [
         tags: ['E-comm', 'Fashion', 'Womenswear'],
     },
     {
-        id: 'living-space',
-        title: 'Living Space Interiors',
-        categories: ['Website'],
-        shortDesc: 'Premium architectural and interior masterpieces for luxury homes and leading commercial spaces.',
-        fullDesc: `• Discover India's finest architectural and interior masterpieces.
-• Specializing in premium designs for luxury homes and commercial spaces.
-• Interactive project coordination tools for clients and designers.
-• High-fidelity visual gallery with sub-second lazy loading.`,
-        link: 'https://livingspaceinteriors.in/',
-        image: livingspace,
-        tags: ['Interior Design', 'Portfolio', 'Management'],
-    },
-    {
         id: 'letuic',
         title: 'Letuic',
         categories: ['Website'],
@@ -116,6 +120,19 @@ export const projects: Project[] = [
         link: 'https://letuic.com/',
         image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=2026',
         tags: ['React', 'PWA', 'Express'],
+    },
+    {
+        id: 'signature-by-lsi',
+        title: 'Signature by LSI',
+        categories: ['Website'],
+        shortDesc: 'Designer furniture store by Living Space Interiors with handcrafted sofas, beds, dining and lighting.',
+        fullDesc: `• Online furniture store from the Living Space Interiors design studio.
+• Handcrafted sofas, beds, dining sets, storage and lighting.
+• Room-wise shopping for living, bedroom and dining collections.
+• Free white-glove delivery and 5-year warranty built into the journey.`,
+        link: 'https://signaturebylsi.com/',
+        image: signaturebylsi,
+        tags: ['E-comm', 'Furniture', 'Interiors'],
     },
     {
         id: 'nexhibit',
@@ -165,7 +182,8 @@ export const projects: Project[] = [
 • Featuring exclusive retro collections and latest season releases.
 • Interactive product customizer using HTML5 canvas.
 • Inventory synchronization across multiple warehouses.`,
-        // link: 'https://www.jerseystation.in/',
+        link: 'https://www.jerseystation.in/',
+        disableLivePreview: true,
         image: jersey_station,
         tags: ['Shopify', 'Canvas', 'Node.js'],
     },
@@ -255,6 +273,19 @@ export const projects: Project[] = [
         tags: ['E-comm', 'Wellness', 'Subs'],
     },
     {
+        id: 'whitebucks',
+        title: 'Whitebucks Consultants',
+        categories: ['Website'],
+        shortDesc: 'CMA-led financial advisory and compliance partner for Kerala MSMEs.',
+        fullDesc: `• Virtual CFO services for growing small and mid-sized businesses.
+• GST and income tax filing with ongoing compliance support.
+• Business advisory and entrepreneur training programmes.
+• CMA-USA certified team with 15+ years and 100+ businesses served.`,
+        link: 'https://www.whitebucks.in/',
+        image: whitebucks,
+        tags: ['Finance', 'Advisory', 'Compliance'],
+    },
+    {
         id: 'spice-route',
         title: 'SpiceRoute Exports',
         categories: ['Website'],
@@ -266,6 +297,19 @@ export const projects: Project[] = [
         link: 'https://spicerouteexports.com/',
         image: spiceroute,
         tags: ['Django', 'Postgres', 'B2B'],
+    },
+    {
+        id: 'mizhy',
+        title: 'Mizhy',
+        categories: ['Website'],
+        shortDesc: "Women's ethnic wear store from Calicut offering kurtas, kurta sets, anarkalis and co-ords.",
+        fullDesc: `• E-commerce storefront for a Calicut-based ethnic wear label.
+• Kurtas, kurta sets, anarkalis, kasavu and festive collections.
+• New designs every week with 48-hour dispatch.
+• Wholesale enquiries and tracked delivery across India.`,
+        link: 'https://mizhy-ecommerce.vercel.app/',
+        image: mizhy,
+        tags: ['E-comm', 'Fashion', 'Ethnic Wear'],
     },
 
     // --- OTHER PROJECTS ---
