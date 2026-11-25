@@ -20,6 +20,8 @@ import labelwe from '@/assets/labelwe.webp';
 import whitebucks from '@/assets/whitebucks.webp';
 import signaturebylsi from '@/assets/signaturebylsi.webp';
 import mizhy from '@/assets/mizhy.webp';
+import lensoraa from '@/assets/lensoraa.webp';
+import houseuntold from '@/assets/houseuntold.webp';
 
 
 export type ProjectCategory = 'Website' | 'Mobile App' | 'Custom Software';
@@ -65,9 +67,24 @@ export const projects: Project[] = [
 • Residential, commercial, hospitality and landscape design under one roof.
 • End-to-end interior fit-outs from structure to furniture and lighting.
 • Image-rich project showcase built on Next.js with optimized media delivery.`,
-        link: 'https://cdco.vercel.app/',
+        link: 'https://beta.cdco.in/',
+        disableLivePreview: true,
         image: concetto,
         tags: ['Architecture', 'Interiors', 'Next.js'],
+    },
+    {
+        id: 'house-untold',
+        title: 'House Untold',
+        categories: ['Website'],
+        status: 'In Development',
+        shortDesc: 'Luxury furniture and décor store from India with artisan-made sofas, dining, bedroom and lighting.',
+        fullDesc: `• E-commerce destination for ultra-luxury furniture and home décor.
+• Shop by room, category and curated collections like the Signature Line.
+• Wishlist, accounts, no-cost EMI and promo-code offers built into checkout.
+• Complimentary design consultations booked straight from the site.`,
+        link: 'https://beta.houseuntold.com/',
+        image: houseuntold,
+        tags: ['E-comm', 'Furniture', 'Luxury'],
     },
     {
         id: 'liberty-exporters',
@@ -146,6 +163,19 @@ export const projects: Project[] = [
         link: 'https://nexhibit.vercel.app/',
         image: 'https://images.unsplash.com/photo-1711390811443-ae5a33144f7d?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D?q=80&w=2000',
         tags: ['Exhibition', 'Event Design', 'Brand Experience'],
+    },
+    {
+        id: 'lensora',
+        title: 'Lensora',
+        categories: ['Website'],
+        shortDesc: 'Premium eyewear brand selling minimalist titanium and acetate frames online.',
+        fullDesc: `• Online storefront for handcrafted, minimalist eyeglass frames.
+• Collections in titanium, Italian acetate, bio-acetate and horn.
+• Interactive Frame Finder quiz matching frames to face shape and style.
+• Editorial brand storytelling with journal newsletter signup.`,
+        link: 'https://www.lensoraa.com/',
+        image: lensoraa,
+        tags: ['E-comm', 'Eyewear', 'Brand'],
     },
     {
         id: 'molodost-dubai',
